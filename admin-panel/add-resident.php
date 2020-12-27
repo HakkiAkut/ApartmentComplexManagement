@@ -10,7 +10,7 @@
     <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
     <meta name="description" content="a web site for the management of an apartment complex">
     <meta name="author" content="Hakkı Can Akut">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
@@ -58,13 +58,13 @@
                     <div id="top-nav-menu">
                         <ul>
                             <li class="top-nav-item">
-                                <a href="announcements.html" class="top-nav-link">Announcements</a>
+                                <a href="../announcements.html" class="top-nav-link">Announcements</a>
                             </li>
                             <li class="top-nav-item">
-                                <a href="management.html" class="top-nav-link">Management</a>
+                                <a href="../management.html" class="top-nav-link">Management</a>
                             </li>
                             <li class="top-nav-item">
-                                <a href="document.html" class="top-nav-link">Documents</a>
+                                <a href="../document.html" class="top-nav-link">Documents</a>
                             </li>
                             <li class="top-nav-item">
                                 <div class="dropdown-button">
@@ -72,7 +72,7 @@
                                         <i class="fa fa-caret-down"></i>
                                     </button>
                                     <div class="dropdown-content">
-                                        <a href="contact.html">suggestion</a>
+                                        <a href="../contact.html">suggestion</a>
                                         <a href="#contact">contact info</a>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                     <h2 style="margin-left: 40px; color: saddlebrown;">Announcments</h2>
                     <ul>
                         <li>
-                            <a href="admin-panel.php">
+                            <a href="add-resident.php">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px">
                                     Add Resident
                                 </p>
@@ -113,13 +113,13 @@
                         <li>
                             <a href="#">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px">
-                                    Change Management
+                                    Resident List
                                 </p>
                             </a>
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="update-dues.php">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px;">
                                     Update Dues
                                 </p>

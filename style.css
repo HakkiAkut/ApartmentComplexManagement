@@ -350,7 +350,7 @@ footer li {
 /*contact*/
 .main-panel#contact-main {
   float: right;
-  width: 70%;
+  width: 55%;
 }
 .left-panel#contact-left {
   float: left;
@@ -427,7 +427,7 @@ footer li {
   float: left;
   padding-right: 10rem;
 }
-.input-form input[type=text], .input-form input[type=password], .input-form select {
+.input-form input[type=text], .input-form input[type=password],.input-form input[type=month], .input-form select {
   width: 100% !important;
   padding: 1.2rem 1.2rem !important;
   align-content: center;
@@ -443,4 +443,10 @@ footer li {
 }
 .error {
   color: red;
+}
+.inline-form{
+  display: inline-block !important;
+}
+.label-input{
+  display: block !important;
 }
