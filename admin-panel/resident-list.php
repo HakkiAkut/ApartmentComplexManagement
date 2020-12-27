@@ -16,12 +16,9 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <title>Admin Panel</title>
     <script>
         if ( window.history.replaceState ) {
@@ -76,7 +73,7 @@
             </nav>
             <div class="space"></div>
             <div class="container clear-div">
-            <div class="left-panel" >
+                <div class="left-panel" >
                     <h2 style="margin-left: 40px; color: saddlebrown;">Announcments</h2>
                     <ul>
                         <li>
@@ -88,7 +85,7 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="resident-list.php">
+                            <a href="#">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px">
                                     Resident List
                                 </p>
@@ -125,22 +122,35 @@
                     </form>
                 </div>
                 <div class="main-panel" id="admin-panel">
-                    <h2 style="margin-left: 20px; color: saddlebrown;">Update Dues</h2>
+                    <h2 style="margin-left: 20px; color: saddlebrown;">Resident List</h2>
                     <div class="space"></div>
-                    <form class="input-form"  action="add-due.php" method="post">
-                        <div class="inline-form">
-                            <label class="label-input" for="charge">Charge</label>
-                            <input class="label-input" type="text" name="charge" id="charge" value="30">
-                        </div>
-                        <div class="inline-form">
-                        <label class="label-input" for="month">Date</label>
-                        <input type="month" name="month" id="month">
-                        </div>
-                        <div class="inline-form">
-                        <input type="submit" id="add-due" value="add due" name="add-due">
-                        </div>
-                    </form>
-
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+                    <div id="demo" class="collapse">
+                         <?php
+                        $conn = new mysqli("localhost", "root", "1234","web20");
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        $sql = "SELECT name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=1";
+                        $result = $conn-> query($sql);
+                        if($result-> num_rows >0){
+                            echo "<table class=\"basic-table\">";
+                            echo "<tr><th>Name</th> 
+                                <th>House</th> 
+                                <th>Entry Date</th>
+                                <th>Departure Date</th></tr>";
+                            while($row = $result->fetch_assoc()){
+                                echo "<tr><td>" . $row['name'] . " " .$row['surname'] . "</td><td>".
+                                $row['apartment']."/".$row['house_no']."</td><td>".
+                                $row['date_of_entry']."</td><td>".
+                                $row['date_of_departure'] . "</td></tr>";
+                            }
+                            echo"</table>";
+                        } else {
+                            echo "there is no record!";
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
             <div class="space"></div>

@@ -111,7 +111,7 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="resident-list.php">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px">
                                     Resident List
                                 </p>

@@ -387,26 +387,26 @@ footer li {
   background-color: #34a73a;
 }
 /*Documents*/
-#due-table {
+.basic-table {
   letter-spacing: .1rem;
   border-collapse: collapse;
   width: 100%;
 }
 
-#due-table td, #due-table th {
+.basic-table td, #due-table th {
   border: 0.1rem solid #E7A977;
   padding: 0.8rem;
 }
 
-#due-table tr:nth-child(even){
+.basic-table tr:nth-child(even){
   background-color: #9AB691;
 }
 
-#due-table tr:hover {
+.basic-table tr:hover {
   background-color: #B5BD61;
 }
 
-#due-table th {
+.basic-table th {
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
   text-align: left;
