@@ -450,3 +450,9 @@ footer li {
 .label-input{
   display: block !important;
 }
+.block-form{
+  display: block !important;
+  margin: 2rem;
+  background-color: #36753b !important;
+  width: 70%;
+}

@@ -12,6 +12,7 @@
     <meta name="author" content="Hakkı Can Akut">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
@@ -20,10 +21,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Admin Panel</title>
-    <script>
+    <script type='text/javascript'>
         if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
         }
+    </script>
+    <script type='text/javascript'>
+        $(document).on("click", ".delete", function(){
+            var $rowtable = $(this).closest("tr");
+            var uid = parseInt($rowtable.find("td:nth-child(1)").text());
+            $(this).parents("tr").clone().appendTo($("#departed-table"));
+            $(this).parents("tr").remove();
+            let today = new Date().toISOString().slice(0, 10)
+            document.getElementById("departed-table").rows[document.getElementById("departed-table").rows.length - 1].cells[4].innerHTML=today;
+            jQuery.ajax({
+                type: "POST",
+                url: 'depart-resident.php',
+                dataType: 'json',
+                data: {id: uid},
+                success: function (obj) {
+                  if(obj.success=='1') {
+                      //alert("done");
+                  }
+                  else {
+                    window.location.reload();
+                    alert("departion is not succesfull!");
+                  }
+            }
+            });     
+        });
     </script>
 </head>
 <body>
@@ -124,23 +150,114 @@
                 <div class="main-panel" id="admin-panel">
                     <h2 style="margin-left: 20px; color: saddlebrown;">Resident List</h2>
                     <div class="space"></div>
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
-                    <div id="demo" class="collapse">
+                    <button type="button" class="btn btn-info block-form" data-toggle="collapse" data-target="#apartmentA">Apartment A</button>
+                    <div id="apartmentA" class="collapse">
                          <?php
                         $conn = new mysqli("localhost", "root", "1234","web20");
                         if ($conn->connect_error) {
                             die("Connection failed: " . $conn->connect_error);
                         }
-                        $sql = "SELECT name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=1";
+                        $sql = "SELECT id, name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=1 AND apartment='A'";
                         $result = $conn-> query($sql);
                         if($result-> num_rows >0){
                             echo "<table class=\"basic-table\">";
-                            echo "<tr><th>Name</th> 
+                            echo "<tr> <th>UID</th>
+                                <th>Name</th> 
                                 <th>House</th> 
                                 <th>Entry Date</th>
-                                <th>Departure Date</th></tr>";
+                                <th>Departure Date</th>
+                                <th>Action</th></tr>";
                             while($row = $result->fetch_assoc()){
-                                echo "<tr><td>" . $row['name'] . " " .$row['surname'] . "</td><td>".
+                                echo "<tr><td>".$row['id']."</td><td>" . $row['name'] . " " .$row['surname'] . "</td><td>".
+                                $row['apartment']."/".$row['house_no']."</td><td>".
+                                $row['date_of_entry']."</td><td>".
+                                $row['date_of_departure'] . "</td>
+                                <td><a class=\"delete\" title=\"Delete\" data-toggle=\"tooltip\"><i class=\"material-icons\"></i></a></td>
+                                </tr>";
+                            }
+                            echo"</table>";
+                        } else {
+                            echo "there is no record!";
+                        }
+                        ?>
+                    </div>
+                    <button type="button" class="btn btn-info block-form" data-toggle="collapse" data-target="#apartmentB">Apartment B</button>
+                    <div id="apartmentB" class="collapse">
+                         <?php
+                        $conn = new mysqli("localhost", "root", "1234","web20");
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        $sql = "SELECT id, name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=1 AND apartment='B'";
+                        $result = $conn-> query($sql);
+                        if($result-> num_rows >0){
+                            echo "<table class=\"basic-table\">";
+                            echo "<tr><th>UID</th>
+                            <th>Name</th> 
+                                <th>House</th> 
+                                <th>Entry Date</th>
+                                <th>Departure Date</th>
+                                <th>Action</th></tr>";
+                            while($row = $result->fetch_assoc()){
+                                echo "<tr><td>".$row['id']."</td><td>" . $row['name'] . " " .$row['surname'] . "</td><td>".
+                                $row['apartment']."/".$row['house_no']."</td><td>".
+                                $row['date_of_entry']."</td><td>".
+                                $row['date_of_departure'] . "</td></tr>";
+                            }
+                            echo"</table>";
+                        } else {
+                            echo "there is no record!";
+                        }
+                        ?>
+                    </div>
+                    <button type="button" class="btn btn-info block-form" data-toggle="collapse" data-target="#apartmentC">Apartment C</button>
+                    <div id="apartmentC" class="collapse">
+                         <?php
+                        $conn = new mysqli("localhost", "root", "1234","web20");
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        $sql = "SELECT id, name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=1 AND apartment='C'";
+                        $result = $conn-> query($sql);
+                        if($result-> num_rows >0){
+                            echo "<table class=\"basic-table\">";
+                            echo "<tr><th>UID</th>
+                                <th>Name</th> 
+                                <th>House</th> 
+                                <th>Entry Date</th>
+                                <th>Departure Date</th>
+                                <th>Action</th></tr>";
+                            while($row = $result->fetch_assoc()){
+                                echo "<tr><td>".$row['id']."</td><td>" . $row['name'] . " " .$row['surname'] . "</td><td>".
+                                $row['apartment']."/".$row['house_no']."</td><td>".
+                                $row['date_of_entry']."</td><td>".
+                                $row['date_of_departure'] . "</td></tr>";
+                            }
+                            echo"</table>";
+                        } else {
+                            echo "there is no record!";
+                        }
+                        ?>
+                    </div>
+                    <button type="button" class="btn btn-info block-form" data-toggle="collapse" data-target="#departed">Departed Residents</button>
+                    <div id="departed" class="collapse">
+                         <?php
+                        $conn = new mysqli("localhost", "root", "1234","web20");
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        $sql = "SELECT id, name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=0";
+                        $result = $conn-> query($sql);
+                        if($result-> num_rows >0){
+                            echo "<table id=\"departed-table\" class=\"basic-table\">";
+                            echo "<tr><th>UID</th>
+                                <th>Name</th> 
+                                <th>House</th> 
+                                <th>Entry Date</th>
+                                <th>Departure Date</th>
+                                </tr>";
+                            while($row = $result->fetch_assoc()){
+                                echo "<tr><td>".$row['id']."</td><td>" . $row['name'] . " " .$row['surname'] . "</td><td>".
                                 $row['apartment']."/".$row['house_no']."</td><td>".
                                 $row['date_of_entry']."</td><td>".
                                 $row['date_of_departure'] . "</td></tr>";
