@@ -39,6 +39,7 @@
         }
     }
 ?>
+
 <div id="page-container">
         <div id="content-wrap">
             <nav>
@@ -104,7 +105,7 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="dues-list.php">
+                            <a href="#">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px">
                                     Due List
                                 </p>
@@ -112,7 +113,7 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="update-dues.php">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px;">
                                     Update Dues
                                 </p>
@@ -125,21 +126,82 @@
                     </form>
                 </div>
                 <div class="main-panel" id="admin-panel">
-                    <h2 style="margin-left: 20px; color: saddlebrown;">Update Dues</h2>
+                    <h2 style="margin-left: 20px; color: saddlebrown;">Due List</h2>
                     <div class="space"></div>
-                    <form class="input-form"  action="add-due.php" method="post">
-                        <div class="inline-form">
-                            <label class="label-input" for="charge">Charge</label>
-                            <input class="label-input" type="text" name="charge" id="charge" value="30">
-                        </div>
-                        <div class="inline-form">
-                        <label class="label-input" for="month">Date</label>
-                        <input type="month" name="month" id="month">
-                        </div>
-                        <div class="inline-form">
-                        <input type="submit" id="add-due" value="add due" name="add-due">
-                        </div>
+                    <form class="input-form"  method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                        <label for="collected">collected</label>
+                        <input type="checkbox" name="collected" id="collected">
+                        <label for="month-list">month</label><span style="font-size: 11px;">*leave blank for all months</span>
+                        <input type="month" name="month" id="month-list">
+                        <label for="apartments">Apartment</label> 
+                                <?php 
+                                $apartments = array("choose one","A","B","C");
+                                echo "<select name=\"apartments\">";
+                                foreach($apartments as $value){
+                                    echo "<option> $value </option>";
+                                }
+                                echo "<select>";
+                                ?>
+                                <label for="door_no">door no</label>
+                                <?php 
+                                $door_no = array("choose one",1,2,3,4,5,6,7,8,9,10,11,12);
+                                echo "<select name=\"door_no\">";
+                                foreach($door_no as $value){
+                                    echo "<option> $value </option>";
+                                }
+                                echo "<select>";
+                                ?>
+                                <input type="submit" name="submit" value="Submit">
                     </form>
+                    <?php
+                    if($_SERVER["REQUEST_METHOD"] == "POST"){
+                        $conn = new mysqli("localhost", "root", "1234","web20");
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        $sql="select dues.id,dues.uid,dues.charge,dues.date,dues.paid_date,
+                        user.name,user.surname,user.apartment,user.house_no from dues inner join user on user.id=dues.uid where ";
+                        if(isset($_POST["collected"])){
+                            $sql = $sql . "paid_date is not null";
+                        } else{
+                            $sql = $sql . "paid_date IS NULL";
+                        }
+                        if($_POST["month"]!=""){
+                            $mnth=$_POST["month"] . "-00";
+                            $sql = $sql . " AND dues.date = '$mnth'";
+                        }
+                        if($_POST["apartments"]!="choose one"){
+                            $apt=$_POST["apartments"];
+                            $sql = $sql . " AND user.apartment='$apt'";
+                            if($_POST["door_no"]!="choose one"){
+                                $drno=$_POST["door_no"];
+                                $sql = $sql . " AND user.house_no='$drno'";
+                            }
+                        }
+                        $result=$conn->query($sql);
+                        if($result->num_rows>0){
+                            
+                            echo "<table class=\"basic-table\">";
+                            echo "<tr> <th>ID</th>
+                                <th>date</th>
+                                <th>Charge</th>
+                                <th>Name</th> 
+                                <th>House</th>
+                                <th>Paid Date</th></tr>";
+                            while($row = $result->fetch_assoc()){
+                                $date1 = $row['date'];     
+                                $date= date('M-Y', strtotime($date1));
+                                echo "<tr><td>".$row['id']."</td><td>". $date."</td><td>".$row['charge']."</td><td>" .$row['name']
+                                ." ". $row['surname'] . "</td><td>".$row['apartment']."/".$row['house_no']."</td><td>".
+                                $row['paid_date']."</td></tr>";
+                            }
+                            echo"</table>";
+                        } else {
+                            echo "there is no record!";
+                        }
+                        
+                    }
+                    ?>
 
                 </div>
             </div>

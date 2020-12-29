@@ -95,9 +95,9 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="resident-list.php">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px">
-                                    add Announcement
+                                    Resident List
                                 </p>
                             </a>
                         </li>
@@ -111,9 +111,9 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="resident-list.php">
+                            <a href="dues-list.php">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px">
-                                    Resident List
+                                    Due List
                                 </p>
                             </a>
                         </li>

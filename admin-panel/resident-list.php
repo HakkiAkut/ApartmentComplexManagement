@@ -127,15 +127,15 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="dues-list.php">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px">
-                                    Change Management
+                                    Due List
                                 </p>
                             </a>
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="update-dues.php">
                                 <p class="left-title" style="margin-top: 10px;margin-bottom:10px;">
                                     Update Dues
                                 </p>
