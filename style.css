@@ -28,8 +28,8 @@ nav {
     font-family: 'Titillium Web',sans-serif;
     background-color: #502419;
     color: #fff;
-    padding-top: 2.4rem;
-    padding-bottom: 2.4rem;
+    padding-top: 2.4rem !important;
+    padding-bottom: 2.4rem !important;
 }
 .container {
     width: 1140px;
@@ -115,8 +115,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 #top-nav-menu .top-nav-item a{
     color: #fff;
-    font-size: 2.4rem;
-    padding: 1.1rem;
+    font-size: 2.4rem !important;
+    padding: 1.1rem !important;
     display: block;
     letter-spacing: .1rem;
     transition: color .3s;

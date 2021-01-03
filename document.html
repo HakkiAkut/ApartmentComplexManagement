@@ -2,244 +2,189 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Apartment Complex Web Page">
-    <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
-    <meta name="description" content="a web site for the management of an apartment complex">
-    <meta name="author" content="Hakkı Can Akut">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <title>Documents</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Apartment Complex Web Page">
+  <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
+  <meta name="description" content="a web site for the management of an apartment complex">
+  <meta name="author" content="Hakkı Can Akut">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet">
+  <title>Docs</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
+
 <body>
-    <div id="page-container">
-        <div id="content-wrap">
-            <nav>
-                <div class="container clear-div">
-                    <div id="logo-container">
-                        <a href="home-page.php" class="logo">
-                            Akdeniz Apartment Complex
-                        </a>
-                    </div>
-                    <div id="top-nav-menu">
-                        <ul>
-                            <li class="top-nav-item">
-                                <a href="announcements.html" class="top-nav-link">Announcments</a>
-                            </li>
-                            <li class="top-nav-item">
-                                <a href="management.html" class="top-nav-link">Management</a>
-                            </li>
-                            <li class="top-nav-item">
-                                <a href="document.html" class="top-nav-link">Documents</a>
-                            </li>
-                            <li class="top-nav-item">
-                                <div class="dropdown-button">
-                                    <button class="dropdown-item">Contact
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <div class="dropdown-content">
-                                        <a href="contact.html">suggestion</a>
-                                        <a href="#contact">contact info</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div class="space"></div>
-            <div class="container clear-div">
-                <div class="left-panel" >
-                    <h2 style="margin-left: 40px; color: saddlebrown;">Documents</h2>
-                    <ul>
-                        <li>
-                            <a href="document.html">
-                                <p class="left-title">
-                                    Expenses
-                                </p>
-                                <p class="left-subtitle">
-                                    October_2020_expenses.pdf
-                                </p>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="docs.html">
-                                <p class="left-title">
-                                    Document B
-                                </p>
-                                
-                                <p class="left-subtitle">
-                                    Document_B.pdf
-                                </p>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="docs.html">
-                                <p class="left-title">
-                                    Document C
-                                </p>
-                                
-                                <p class="left-subtitle">
-                                    Document_C.pdf
-                                </p>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="docs.html">
-                                <p class="left-title">
-                                    Document D
-                                </p>
-                                
-                                <p class="left-subtitle">
-                                    Document_D.pdf
-                                </p>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="docs.html">
-                                <p class="left-title">
-                                    Document E
-                                </p>
-                                
-                                <p class="left-subtitle">
-                                    Document_E.pdf
-                                </p>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="docs.html">
-                                <p class="left-title">
-                                    Document F
-                                </p>
-                                
-                                <p class="left-subtitle">
-                                    Document_F.pdf
-                                </p>
-                            </a>
-                        </li>
-                        <hr>
-                    </ul>
-                    <form action="logout.php" method="post">
-                        <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout">
-                        </input>
-                    </form>
-                </div>
-                <div class="main-panel">
-                    <h2 style="margin-left: 20px; color: saddlebrown;">Dues</h2>
-                    <div class="space"></div>
-                    <table class="basic-table">
-                        <tr>
-                          <th>Date</th>
-                          <th>Fee</th>
-                          <th>Status</th>
-                        </tr>
-                        <tr>
-                          <td>January 2020</td>
-                          <td>30 TL</td>
-                          <td>Paid</td>
-                        </tr>
-                        <tr>
-                          <td>February 2020</td>
-                          <td>30 TL</td>
-                          <td>Paid</td>
-                        </tr>
-                        <tr>
-                          <td>March 2020</td>
-                          <td>30 TL</td>
-                          <td>Paid</td>
-                        </tr>
-                        <tr>
-                          <td>April 2020</td>
-                          <td>30 TL</td>
-                          <td>Paid</td>
-                        </tr>
-                        <tr>
-                          <td>May 2020</td>
-                          <td>30 TL</td>
-                          <td>Paid</td>
-                        </tr>
-                        <tr>
-                          <td>June 2020</td>
-                          <td>30 TL</td>
-                          <td>Paid</td>
-                        </tr>
-                        <tr>
-                          <td>July 2020</td>
-                          <td>30 TL</td>
-                          <td>Paid</td>
-                        </tr>
-                        <tr>
-                          <td>August 2020</td>
-                          <td>30 TL</td>
-                          <td>Paid</td>
-                        </tr>
-                        <tr>
-                          <td>September 2020</td>
-                          <td>30 TL</td>
-                          <td>Paid</td>
-                        </tr>
-                        <tr>
-                          <td>October 2020</td>
-                          <td>30 TL</td>
-                          <td>Unpaid</td>
-                        </tr>
-                        <tr>
-                          <td>November 2020</td>
-                          <td>0 TL</td>
-                          <td>Uncharged</td>
-                        </tr>
-                        <tr>
-                          <td>December 2020</td>
-                          <td>0 TL</td>
-                          <td>Uncharged</td>
-                        </tr>
-                      </table>
-                      
-                </div>
-            </div>
-            <div class="space"></div>
-        </div>
-            <footer>
-            <div class="container clear-div" id="contact">
-                <ul>
-                    <li>
-                        <div class="col">
-                            <h4>Location</h4>
-                            <p>
-                                A Mahallesi, B Caddesi, Akdeniz Sitesi, Türkiye/Antalya
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col">
-                            <h4>Email</h4>
-                            <p>
-                                akdeniz@apartment.com
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col">
-                            <h4>
-                                Phone Number
-                            </h4>
-                            <p>
-                                +0(222) 222 2222
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            </footer>
+
+  <div class="d-flex page-container" id="wrapper">
+    <div class="border-right left-panel" id="sidebar-wrapper">
+      <div class="sidebar-heading">Docs</div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action ">January Expenses</a>
+        <a href="#" class="list-group-item list-group-item-action ">December Expenses</a>
+      </div>
     </div>
+    <div id="page-content-wrapper" class="content-wrap">
+      <nav class="navbar navbar-expand-lg navbar-light clear-div border-bottom top-nav-menu">
+        <button style="background-color: rgb(143, 75, 58);border: saddlebrown;" class="btn btn-primary" id="menu-toggle"><i class="fa fa-caret-right"></i></button>
+        <div id="logo-container">
+          <a href="home-page.php" class="logo">
+              Akdeniz Apartment Complex
+          </a>
+      </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="top-nav-item">
+              <a  href="www.google.com">Home</a>
+            </li>
+            <li class="top-nav-item">
+              <a  href="#">Announcments</a>
+            </li>
+            <li class="top-nav-item">
+              <a  href="#">Documents</a>
+            </li>
+            <li class="top-nav-item">
+              <a  href="#">Management</a>
+            </li>
+            <li class="top-nav-item dropdown-button">
+              <a  href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contact <i class="fa fa-caret-down"></i>
+              </a>
+              <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
+                <a href="contact.html">suggestion</a>
+                <a href="#contact">contact info</a>
+              </div>
+            </li>
+          </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="main-panel">
+          <h2 style="margin-left: 20px; color: saddlebrown;">Dues</h2>
+          <div class="space"></div>
+          <table class="basic-table">
+              <tr>
+                <th>Date</th>
+                <th>Fee</th>
+                <th>Status</th>
+              </tr>
+              <tr>
+                <td>January 2020</td>
+                <td>30 TL</td>
+                <td>Paid</td>
+              </tr>
+              <tr>
+                <td>February 2020</td>
+                <td>30 TL</td>
+                <td>Paid</td>
+              </tr>
+              <tr>
+                <td>March 2020</td>
+                <td>30 TL</td>
+                <td>Paid</td>
+              </tr>
+              <tr>
+                <td>April 2020</td>
+                <td>30 TL</td>
+                <td>Paid</td>
+              </tr>
+              <tr>
+                <td>May 2020</td>
+                <td>30 TL</td>
+                <td>Paid</td>
+              </tr>
+              <tr>
+                <td>June 2020</td>
+                <td>30 TL</td>
+                <td>Paid</td>
+              </tr>
+              <tr>
+                <td>July 2020</td>
+                <td>30 TL</td>
+                <td>Paid</td>
+              </tr>
+              <tr>
+                <td>August 2020</td>
+                <td>30 TL</td>
+                <td>Paid</td>
+              </tr>
+              <tr>
+                <td>September 2020</td>
+                <td>30 TL</td>
+                <td>Paid</td>
+              </tr>
+              <tr>
+                <td>October 2020</td>
+                <td>30 TL</td>
+                <td>Unpaid</td>
+              </tr>
+              <tr>
+                <td>November 2020</td>
+                <td>0 TL</td>
+                <td>Uncharged</td>
+              </tr>
+              <tr>
+                <td>December 2020</td>
+                <td>0 TL</td>
+                <td>Uncharged</td>
+              </tr>
+            </table>
+            
+      </div>
+      </div>
+      <div class="space"></div>
+    </div>
+    <footer>
+      <div class="container clear-div" id="contact">
+          <ul>
+              <li>
+                  <div class="col">
+                      <h4>Location</h4>
+                      <p>
+                          A Mahallesi, B Caddesi, Akdeniz Sitesi, Türkiye/Antalya
+                      </p>
+                  </div>
+              </li>
+              <li>
+                  <div class="col">
+                      <h4>Email</h4>
+                      <p>
+                          akdeniz@apartment.com
+                      </p>
+                  </div>
+              </li>
+              <li>
+                  <div class="col">
+                      <h4>
+                          Phone Number
+                      </h4>
+                      <p>
+                          +0(222) 222 2222
+                      </p>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      </footer>
+  </div>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 </body>
+</html>
