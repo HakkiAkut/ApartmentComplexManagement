@@ -2,124 +2,127 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Apartment Complex Web Page">
-    <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
-    <meta name="description" content="a web site for the management of an apartment complex">
-    <meta name="author" content="Hakkı Can Akut">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <title>Contact</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Apartment Complex Web Page">
+  <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
+  <meta name="description" content="a web site for the management of an apartment complex">
+  <meta name="author" content="Hakkı Can Akut">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet">
+  <title>Contact</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <div id="page-container">
-        <div id="content-wrap">
-            <nav>
-                <div class="container clear-div">
-                    <div id="logo-container">
-                        <a href="home-page.php" class="logo">
-                            Akdeniz Apartment Complex
-                        </a>
-                    </div>
-                    <div id="top-nav-menu">
-                        <ul>
-                            <li class="top-nav-item">
-                                <a href="announcements.html" class="top-nav-link">Announcments</a>
-                            </li>
-                            <li class="top-nav-item">
-                                <a href="management.html" class="top-nav-link">Management</a>
-                            </li>
-                            <li class="top-nav-item">
-                                <a href="document.html" class="top-nav-link">Documents</a>
-                            </li>
-                            <li class="top-nav-item">
-                                <div class="dropdown-button">
-                                    <button class="dropdown-item">Contact
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <div class="dropdown-content">
-                                        <a href="contact.html">suggestion</a>
-                                        <a href="#contact">contact info</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div class="space"></div>
-            <div class="container clear-div">
-                <div class="left-panel" id="contact-left">
-                    <img src="img/account.png" alt="account">
-                    <h3>
-                        Hakkı Can Akut
-                    </h3>
-                    <p>
-                        address: <span>Akdeniz Sitesi, A/18</span>
-                    </p> <br>
-                    <p>
-                        phone: <span>+90 555 555 5555</span>
-                    </p> <br>
-                    <form action="logout.php" method="post">
-                        <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout">
-                        </input>
-                    </form>
-                </div>
-        
-                <div class="main-panel" id="contact-main">
-                    <h2>
-                        Contact form
-                    </h2>
-                    <form action="/file.php">
-                        <label for="topic">Topic</label> <br>
-                        <textarea rows="2" cols="25" placeholder="write your topic" id="topic" name="topic"></textarea>
-                        <br>
-                        <label for="message">Message</label> <br>
-                        <textarea rows="2" cols="25" placeholder="write your suggestion" id="message" name="message"></textarea>
-                        <br>
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
-            </div>
-            <div class="space"></div>
+
+  <div class="d-flex page-container" id="wrapper">
+    <div class="border-right left-panel" id="sidebar-wrapper">
+      <div class="sidebar-heading">Contact</div>
+      <div class="list-group list-group-flush">
+        <a href="#contact" class="list-group-item list-group-item-action ">Contact</a>
+      </div>
+    </div>
+    <div id="page-content-wrapper" class="content-wrap">
+      <nav class="navbar navbar-expand-lg navbar-light clear-div border-bottom top-nav-menu">
+        <button style="background-color: rgb(143, 75, 58);border: saddlebrown;" class="btn btn-primary" id="menu-toggle"><i class="fa fa-caret-right"></i></button>
+        <div id="logo-container">
+          <a href="home-page.php" class="logo">
+              Akdeniz Apartment Complex
+          </a>
+      </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="top-nav-item">
+              <a  href="announcements.html">Announcments</a>
+            </li>
+            <li class="top-nav-item">
+              <a  href="document.html">Documents</a>
+            </li>
+            <li class="top-nav-item">
+              <a  href="management.html">Management</a>
+            </li>
+            <li class="top-nav-item dropdown-button">
+              <a  href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contact <i class="fa fa-caret-down"></i>
+              </a>
+              <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
+                <a href="contact.html">suggestion</a>
+                <a href="#contact">contact info</a>
+              </div>
+            </li>
+          </li>
+          </ul>
         </div>
-        <footer>
-            <div class="container clear-div" id="contact">
-                <ul>
-                    <li>
-                        <div class="col">
-                            <h4>Location</h4>
-                            <p>
-                                A Mahallesi, B Caddesi, Akdeniz Sitesi, Türkiye/Antalya
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col">
-                            <h4>Email</h4>
-                            <p>
-                                akdeniz@apartment.com
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="col">
-                            <h4>
-                                Phone Number
-                            </h4>
-                            <p>
-                                +0(222) 222 2222
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </footer>
-      </div> 
+      </nav>
+
+      <div class="container-fluid">
+        <div class="main-panel">
+          <h2 style="margin-left: 20px; color: saddlebrown;">Contact Form</h2>
+          <div class="space"></div>
+
+        <form action="/file.php">
+            <label for="topic">Topic</label> <br>
+            <textarea rows="2" cols="25" placeholder="write your topic" id="topic" name="topic"></textarea>
+            <br>
+            <label for="message">Message</label> <br>
+            <textarea rows="2" cols="25" placeholder="write your suggestion" id="message" name="message"></textarea>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+      </div>
+      </div>
+      <div class="space"></div>
+    </div>
+    <footer>
+      <div class="container clear-div" id="contact">
+          <ul>
+              <li>
+                  <div class="col">
+                      <h4>Location</h4>
+                      <p>
+                          A Mahallesi, B Caddesi, Akdeniz Sitesi, Türkiye/Antalya
+                      </p>
+                  </div>
+              </li>
+              <li>
+                  <div class="col">
+                      <h4>Email</h4>
+                      <p>
+                          akdeniz@apartment.com
+                      </p>
+                  </div>
+              </li>
+              <li>
+                  <div class="col">
+                      <h4>
+                          Phone Number
+                      </h4>
+                      <p>
+                          +0(222) 222 2222
+                      </p>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      </footer>
+  </div>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 </body>
+</html>

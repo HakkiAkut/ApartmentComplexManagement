@@ -27,10 +27,10 @@
       <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action ">Meeting</a>
         <a href="#" class="list-group-item list-group-item-action ">December Expenses</a>
-        <a href="#" class="list-group-item list-group-item-action ">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action ">Events</a>
-        <a href="#" class="list-group-item list-group-item-action ">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action ">Status</a>
+        <a href="#" class="list-group-item list-group-item-action ">November Expenses</a>
+        <a href="#" class="list-group-item list-group-item-action ">October Expenses</a>
+        <a href="#" class="list-group-item list-group-item-action ">September Expenses</a>
+        <a href="#" class="list-group-item list-group-item-action ">August Expenses</a>
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
         </form>

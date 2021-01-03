@@ -409,7 +409,7 @@ list-style-type: none;
 
 }
 .management li {
-float: left;
+display: inline-block;
 padding-right: 10rem;
 }
 .input-form input[type=text], .input-form input[type=password],.input-form input[type=month], .input-form select {
