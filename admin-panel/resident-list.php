@@ -72,7 +72,7 @@
         <a href="dues-list.php" class="list-group-item list-group-item-action ">Due List</a>
         <a href="update-dues.php" class="list-group-item list-group-item-action ">Update Dues</a>
         <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
-        
+
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
         </form>
@@ -83,7 +83,7 @@
       <nav class="navbar navbar-expand-lg navbar-light clear-div border-bottom top-nav-menu">
         <button style="background-color: rgb(143, 75, 58);border: saddlebrown;" class="btn btn-primary" id="menu-toggle"><i class="fa fa-caret-right"></i></button>
         <div id="logo-container">
-          <a href="home-page.php" class="logo">
+          <a href="../home-page.php" class="logo">
               Akdeniz Apartment Complex
           </a>
       </div>
@@ -102,7 +102,7 @@
             <li class="top-nav-item">
                 <?php
                     if($_SESSION["authority"]==1){
-                      echo '<a href="admin-panel/add-resident.php" class="top-nav-link">Admin</a>';
+                      echo '<a href="add-resident.php" class="top-nav-link">Admin</a>';
                     }
                 ?>
               </li>

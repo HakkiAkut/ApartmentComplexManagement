@@ -32,8 +32,8 @@
     <div class="border-right left-panel" id="sidebar-wrapper">
       <div class="sidebar-heading">Docs</div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action ">Dues</a>
-        <a href="expense-income-list.php" class="list-group-item list-group-item-action ">Expense/Income</a>
+        <a href="dues.php" class="list-group-item list-group-item-action ">Dues</a>
+        <a href="#" class="list-group-item list-group-item-action ">Expense/Income</a>
       </div>
     </div>
     <div id="page-content-wrapper" class="content-wrap">
@@ -75,28 +75,28 @@
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Dues</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Expanses and Incomes</h2>
           <div class="space"></div>
-          <button type="button" class="btn btn-info block-form list-btn" data-toggle="collapse" data-target="#paid"><span class="list-btn">Paid Dues</span></button>
-                    <div id="paid" class="collapse">
+          <button type="button" class="btn btn-info block-form list-btn" data-toggle="collapse" data-target="#expenses"><span class="list-btn">Expenses</span></button>
+                    <div id="expenses" class="collapse">
                          <?php
                          $uid=$_SESSION['userId'];
                         $conn = new mysqli("localhost", "root", "1234","web20");
                         if ($conn->connect_error) {
                             die("Connection failed: " . $conn->connect_error);
                         }
-                        $sql = "SELECT id, date,charge FROM dues WHERE uid=$uid AND paid_date IS NOT NULL";
+                        $sql = "SELECT date, explanation,price FROM expenses WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
                         $result = $conn-> query($sql);
                         if($result-> num_rows >0){
                             echo "<table class=\"table table-striped table-borderless\">";
-                            echo "<tr> <th>ID</th>
-                                <th>Date</th> 
-                                <th>Charge</th> 
+                            echo "<tr> <th>Date</th>
+                                <th>Explanation</th> 
+                                <th>Price</th> 
                                 </tr>";
                             while($row = $result->fetch_assoc()){
-                                echo "<tr><td>".$row['id']."</td><td>" .
-                                $row['date'] . "</td><td>".
-                                $row['charge']."</td>
+                                echo "<tr><td>".$row['date']."</td><td>" .
+                                $row['explanation'] . "</td><td>".
+                                $row['price']."</td>
                                 </tr>";
                             }
                             echo"</table>";
@@ -105,26 +105,26 @@
                         }
                         ?>
                     </div>
-                    <button type="button" class="btn btn-info block-form list-btn" data-toggle="collapse" data-target="#unpaid"><span class="list-btn">Unpaid Dues</span></button>
-                    <div id="unpaid" class="collapse">
+                    <button type="button" class="btn btn-info block-form list-btn" data-toggle="collapse" data-target="#incomes"><span class="list-btn">Incomes</span></button>
+                    <div id="incomes" class="collapse">
                          <?php
                          $uid=$_SESSION['userId'];
                         $conn = new mysqli("localhost", "root", "1234","web20");
                         if ($conn->connect_error) {
                             die("Connection failed: " . $conn->connect_error);
                         }
-                        $sql = "SELECT id, date,charge FROM dues WHERE uid=$uid AND paid_date IS NULL";
+                        $sql = "SELECT date, explanation,price FROM incomes WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
                         $result = $conn-> query($sql);
                         if($result-> num_rows >0){
                             echo "<table class=\"table table-striped table-borderless\">";
-                            echo "<tr> <th>ID</th>
-                                <th>Date</th> 
-                                <th>Charge</th> 
+                            echo "<tr> <th>Date</th>
+                            <th>Explanation</th> 
+                            <th>Price</th> 
                                 </tr>";
                             while($row = $result->fetch_assoc()){
-                                echo "<tr><td>".$row['id']."</td><td>" .
-                                $row['date'] . "</td><td>".
-                                $row['charge']."</td>
+                                echo "<tr><td>".$row['date']."</td><td>" .
+                                $row['explanation'] . "</td><td>".
+                                $row['price']."</td>
                                 </tr>";
                             }
                             echo"</table>";
