@@ -65,10 +65,10 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="#">Announcments</a>
+              <a  href="../announcements.html">Announcments</a>
             </li>
             <li class="top-nav-item">
-              <a  href="#">Documents</a>
+              <a  href="../document/dues.php">Documents</a>
             </li>
             <li class="top-nav-item">
                 <?php
@@ -78,14 +78,14 @@
                 ?>
               </li>
             <li class="top-nav-item">
-              <a  href="#">Management</a>
+              <a  href="../management.html">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
               <a  href="#">
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="contact.html">suggestion</a>
+                <a href="../contact.html">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
@@ -96,11 +96,12 @@
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Dues</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Due List</h2>
           <div class="space"></div>
           <form class="input-form"  method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                        <label for="collected">collected</label>
-                        <input type="checkbox" name="collected" id="collected">
+                        <label class="label-input" for="collected">collected </label>
+                        <input class="label-input" type="checkbox" name="collected" id="collected">
+                        
                         <label for="month-list">month</label><span style="font-size: 11px;">*leave blank for all months</span>
                         <input type="month" name="month" id="month-list">
                         <label for="apartments">Apartment</label> 

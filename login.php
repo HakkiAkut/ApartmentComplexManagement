@@ -8,7 +8,7 @@
     <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
     <meta name="description" content="a web site for the management of an apartment complex">
     <meta name="author" content="Hakkı Can Akut">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
@@ -17,15 +17,14 @@
     
 </head>
 <body>
-<nav>
-        <div class="container clear-div">
-            <div id="logo-container">
-                <a href="/" class="logo">
-                    Akdeniz Apartment Complex
-                </a>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light clear-div border-bottom top-nav-menu">
+        <button style="background-color: rgb(143, 75, 58);border: saddlebrown;" class="btn btn-primary" id="menu-toggle"><i class="fa fa-caret-right"></i></button>
+        <div id="logo-container">
+          <a href="index.html" class="logo">
+              Akdeniz Apartment Complex
+          </a>
+      </div>
+      </nav>
   <?php
         $error_msg="";
         if(isset($_POST["Login"])){

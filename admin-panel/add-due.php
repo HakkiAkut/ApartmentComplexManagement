@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             FROM user
             WHERE state=1";
             if ($conn->query($sql) === TRUE) {
-                echo "New due!";
+                header("location: update-dues.php");
               }
       }
 }

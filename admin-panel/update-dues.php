@@ -66,10 +66,10 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="#">Announcments</a>
+              <a  href="../announcements.html">Announcments</a>
             </li>
             <li class="top-nav-item">
-              <a  href="#">Documents</a>
+              <a  href="../document/dues.php">Documents</a>
             </li>
             <li class="top-nav-item">
                 <?php
@@ -79,14 +79,14 @@
                 ?>
               </li>
             <li class="top-nav-item">
-              <a  href="#">Management</a>
+              <a  href="../management.html">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
               <a  href="#">
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="contact.html">suggestion</a>
+                <a href="../contact.html">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
@@ -97,7 +97,7 @@
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Dues</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Add Dues</h2>
           <div class="space"></div>
           <form class="input-form"  action="add-due.php" method="post">
                         <div class="inline-form">
@@ -112,7 +112,71 @@
                         <input type="submit" id="add-due" value="add due" name="add-due">
                         </div>
                     </form>
-
+                    <h2 style="margin-left: 20px; color: saddlebrown;">Pay Dues</h2>
+                    <div class="space"></div>
+                    <form class="input-form" method="post">
+                    <label for="apartments">Apartment</label>
+                                <?php 
+                                $apartments = array("choose one","A","B","C");
+                                echo "<select name=\"apartments\">";
+                                foreach($apartments as $value){
+                                    echo "<option> $value </option>";
+                                }
+                                echo "<select>";
+                                ?>
+                                <label for="door_no">door no:</label>
+                                <?php 
+                                $door_no = array("choose one",1,2,3,4,5,6,7,8,9,10,11,12);
+                                echo "<select name=\"door_no\">";
+                                foreach($door_no as $value){
+                                    echo "<option> $value </option>";
+                                }
+                                echo "<select>";
+                                ?>
+                      <input type="submit" name="submit" value="Submit">  
+                    </form>
+                    <?php
+                    $uid="";
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                      if (empty($_POST["apartments"])||empty($_POST["door_no"])) {
+                        echo"Apartment and door no must be picked!";
+                      } else{
+                        $conn = new mysqli("localhost", "root", "1234","web20");
+                        if ($conn->connect_error) {                         
+                          die("Connection failed: " . $conn->connect_error);
+                      }
+                      $apt=$_POST["apartments"];
+                      $door = $_POST["door_no"];
+                      $sql="SELECT id FROM user WHERE apartment='$apt' AND house_no='$door' AND state=1";
+                      
+                      $query = $conn->query($sql);
+                      if($query->num_rows>0){
+                        $row= $query->fetch_assoc();
+                        $uid =$row['id'];
+                      }
+                      if($uid==""){
+                        echo "there is no unpaid dues!";
+                      }else{
+                        $sql="SELECT date,id,charge FROM dues WHERE uid=$uid AND paid_date IS NULL";
+                        $query = $conn->query($sql);
+                        if($query->num_rows>0){
+                          echo '<div class="space"></div>' ;
+                          echo"<form class='input-form' action='pay-due.php' method='POST'>";
+                          while($row= $query->fetch_assoc()){
+                            echo '<label class="label-input" for="'.$row['id'].'">';
+                            echo '<input type="checkbox" name="'.$row['id'].'">'.' '. $row['date']." - ".$row['charge']. ' TL' ;
+                            echo ' </label>';
+                          }
+                          echo'<input type="hidden"  name="id" value="'.$uid.'"  />';
+                          echo'<input type="submit" name="submit" value="Pay"> ';
+                          echo"</form>";
+                        }else{
+                          echo "there is no unpaid dues!";
+                        }
+                      }
+                      }
+                      }
+                    ?>
 
         </div>
       </div>

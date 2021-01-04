@@ -2,48 +2,50 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Apartment Complex Web Page">
-    <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
-    <meta name="description" content="a web site for the management of an apartment complex">
-    <meta name="author" content="Hakkı Can Akut">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <title>Apartment Complex Web Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Apartment Complex Web Page">
+  <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
+  <meta name="description" content="a web site for the management of an apartment complex">
+  <meta name="author" content="Hakkı Can Akut">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet">
+  <title>Management</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <div id="page-container">
-        <div id="content-wrap">
-    <nav>
-        <div class="container clear-div">
-            <div id="logo-container">
-                <a href="/" class="logo">
-                    Akdeniz Apartment Complex
-                </a>
-            </div>
-            <div id="top-nav-menu">
-                <ul>
-                    <li class="top-nav-item">
-                        <a href="#contact" class="top-nav-link">Contact</a>
-                    </li>
-                    <li class="top-nav-item">
-                        <a href="#catalog" class="top-nav-link">Catalog</a>
-                    </li>
-                    <li class="top-nav-item">
-                        <a href="login.php" class="top-nav-link">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <header>
+  <div class="d-flex page-container" id="wrapper">
+    <div id="page-content-wrapper" class="content-wrap">
+      <nav class="navbar navbar-expand-lg navbar-light clear-div border-bottom top-nav-menu">
+        <div id="logo-container">
+          <a href="#" class="logo">
+              Akdeniz Apartment Complex
+          </a>
+      </div>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="top-nav-item">
+              <a  href="#contact">Contact</a>
+            </li>
+            <li class="top-nav-item">
+              <a  href="#catalog">Catalog</a>
+            </li>
+            <li class="top-nav-item">
+              <a  href="Login.php">Login</a>
+            </li>
+          </li>
+          </ul>
+        </div>
+      </nav>
+
+      <header>
         <div class="container">
             <img src="img/logo1.png" alt="logo" id="logo-image" class="fluid-image">
             <h1>
@@ -75,42 +77,39 @@
             </div>
         </div>
     </section>
-
     </div>
     <footer>
-
-        <div class="container clear-div" id="contact">
-            <ul>
-                <li>
-                    <div class="col">
-                        <h4>Location</h4>
-                        <p>
-                            A Mahallesi, B Caddesi, Akdeniz Sitesi, Türkiye/Antalya
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <div class="col">
-                        <h4>Email</h4>
-                        <p>
-                            akdeniz@apartment.com
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <div class="col">
-                        <h4>
-                            Phone Number
-                        </h4>
-                        <p>
-                            +0(222) 222 2222
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </footer>
-    </div>
+      <div class="container clear-div" id="contact">
+          <ul>
+              <li>
+                  <div class="col">
+                      <h4>Location</h4>
+                      <p>
+                          A Mahallesi, B Caddesi, Akdeniz Sitesi, Türkiye/Antalya
+                      </p>
+                  </div>
+              </li>
+              <li>
+                  <div class="col">
+                      <h4>Email</h4>
+                      <p>
+                          akdeniz@apartment.com
+                      </p>
+                  </div>
+              </li>
+              <li>
+                  <div class="col">
+                      <h4>
+                          Phone Number
+                      </h4>
+                      <p>
+                          +0(222) 222 2222
+                      </p>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      </footer>
+  </div>
 </body>
-
 </html>

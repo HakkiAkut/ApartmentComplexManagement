@@ -20,7 +20,11 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
+<?php
+    if(!isset($_SESSION["name"])){
+        header("location: index.html");
+    }
+    ?>
   <div class="d-flex page-container" id="wrapper">
     <div class="border-right left-panel" id="sidebar-wrapper">
       <div class="sidebar-heading">Home</div>
@@ -52,10 +56,10 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="#">Announcments</a>
+              <a  href="announcements.html">Announcments</a>
             </li>
             <li class="top-nav-item">
-              <a  href="#">Documents</a>
+              <a  href="document/dues.php">Documents</a>
             </li>
             <li class="top-nav-item">
                 <?php
@@ -65,7 +69,7 @@
                 ?>
               </li>
             <li class="top-nav-item">
-              <a  href="#">Management</a>
+              <a  href="management.html">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
               <a  href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

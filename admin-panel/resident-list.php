@@ -93,10 +93,10 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="#">Announcments</a>
+              <a  href="../announcements.html">Announcments</a>
             </li>
             <li class="top-nav-item">
-              <a  href="#">Documents</a>
+              <a  href="../document/dues.php">Documents</a>
             </li>
             <li class="top-nav-item">
                 <?php
@@ -106,14 +106,14 @@
                 ?>
               </li>
             <li class="top-nav-item">
-              <a  href="#">Management</a>
+              <a  href="../management.html">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
               <a  href="#">
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="contact.html">suggestion</a>
+                <a href="../contact.html">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
@@ -124,7 +124,7 @@
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Dues</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Resident List</h2>
           <div class="space"></div>
           <button type="button" class="btn btn-info block-form list-btn" data-toggle="collapse" data-target="#apartmentA"><span class="list-btn">Apartment A</span></button>
                     <div id="apartmentA" class="collapse">
@@ -136,13 +136,13 @@
                         $sql = "SELECT id, name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=1 AND apartment='A'";
                         $result = $conn-> query($sql);
                         if($result-> num_rows >0){
-                            echo "<table class=\"basic-table\">";
+                            echo "<table class=\"table table-striped table-borderless\">";
                             echo "<tr> <th>UID</th>
                                 <th>Name</th> 
                                 <th>House</th> 
                                 <th>Entry Date</th>
                                 <th>Departure Date</th>
-                                <th>Action</th></tr>";
+                                </tr>";
                             while($row = $result->fetch_assoc()){
                                 echo "<tr><td>".$row['id']."</td><td>" . $row['name'] . " " .$row['surname'] . "</td><td>".
                                 $row['apartment']."/".$row['house_no']."</td><td>".
@@ -167,7 +167,7 @@
                         $sql = "SELECT id, name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=1 AND apartment='B'";
                         $result = $conn-> query($sql);
                         if($result-> num_rows >0){
-                            echo "<table class=\"basic-table\">";
+                            echo "<table class=\"table table-striped table-borderless\">";
                             echo "<tr><th>UID</th>
                             <th>Name</th> 
                                 <th>House</th> 
@@ -196,7 +196,7 @@
                         $sql = "SELECT id, name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=1 AND apartment='C'";
                         $result = $conn-> query($sql);
                         if($result-> num_rows >0){
-                            echo "<table class=\"basic-table\">";
+                            echo "<table class=\"table table-striped table-borderless\">";
                             echo "<tr><th>UID</th>
                                 <th>Name</th> 
                                 <th>House</th> 
@@ -225,7 +225,7 @@
                         $sql = "SELECT id, name, surname, apartment, house_no, date_of_entry, date_of_departure FROM user WHERE state=0";
                         $result = $conn-> query($sql);
                         if($result-> num_rows >0){
-                            echo "<table id=\"departed-table\" class=\"basic-table\">";
+                            echo "<table id=\"departed-table\" class=\"table table-striped table-borderless\">";
                             echo "<tr><th>UID</th>
                                 <th>Name</th> 
                                 <th>House</th> 

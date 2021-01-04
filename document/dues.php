@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+    session_start();
+?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +10,23 @@
   <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
   <meta name="description" content="a web site for the management of an apartment complex">
   <meta name="author" content="Hakkı Can Akut">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet">
   <title>Docs</title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
 <body>
+<?php
+    if(!isset($_SESSION["name"])){
+        header("location: index.html");
+    }
+    ?>
 
   <div class="d-flex page-container" id="wrapper">
     <div class="border-right left-panel" id="sidebar-wrapper">
@@ -70,74 +77,62 @@
         <div class="main-panel">
           <h2 style="margin-left: 20px; color: saddlebrown;">Dues</h2>
           <div class="space"></div>
-          <table class="basic-table">
-              <tr>
-                <th>Date</th>
-                <th>Fee</th>
-                <th>Status</th>
-              </tr>
-              <tr>
-                <td>January 2020</td>
-                <td>30 TL</td>
-                <td>Paid</td>
-              </tr>
-              <tr>
-                <td>February 2020</td>
-                <td>30 TL</td>
-                <td>Paid</td>
-              </tr>
-              <tr>
-                <td>March 2020</td>
-                <td>30 TL</td>
-                <td>Paid</td>
-              </tr>
-              <tr>
-                <td>April 2020</td>
-                <td>30 TL</td>
-                <td>Paid</td>
-              </tr>
-              <tr>
-                <td>May 2020</td>
-                <td>30 TL</td>
-                <td>Paid</td>
-              </tr>
-              <tr>
-                <td>June 2020</td>
-                <td>30 TL</td>
-                <td>Paid</td>
-              </tr>
-              <tr>
-                <td>July 2020</td>
-                <td>30 TL</td>
-                <td>Paid</td>
-              </tr>
-              <tr>
-                <td>August 2020</td>
-                <td>30 TL</td>
-                <td>Paid</td>
-              </tr>
-              <tr>
-                <td>September 2020</td>
-                <td>30 TL</td>
-                <td>Paid</td>
-              </tr>
-              <tr>
-                <td>October 2020</td>
-                <td>30 TL</td>
-                <td>Unpaid</td>
-              </tr>
-              <tr>
-                <td>November 2020</td>
-                <td>0 TL</td>
-                <td>Uncharged</td>
-              </tr>
-              <tr>
-                <td>December 2020</td>
-                <td>0 TL</td>
-                <td>Uncharged</td>
-              </tr>
-            </table>
-            
+          <button type="button" class="btn btn-info block-form list-btn" data-toggle="collapse" data-target="#paid"><span class="list-btn">Paid Dues</span></button>
+                    <div id="paid" class="collapse">
+                         <?php
+                         $uid=$_SESSION['userId'];
+                        $conn = new mysqli("localhost", "root", "1234","web20");
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        $sql = "SELECT id, date,charge FROM dues WHERE uid=$uid AND paid_date IS NOT NULL";
+                        $result = $conn-> query($sql);
+                        if($result-> num_rows >0){
+                            echo "<table class=\"table table-striped table-borderless\">";
+                            echo "<tr> <th>ID</th>
+                                <th>Date</th> 
+                                <th>Charge</th> 
+                                </tr>";
+                            while($row = $result->fetch_assoc()){
+                                echo "<tr><td>".$row['id']."</td><td>" .
+                                $row['date'] . "</td><td>".
+                                $row['charge']."</td>
+                                </tr>";
+                            }
+                            echo"</table>";
+                        } else {
+                            echo "there is no record!";
+                        }
+                        ?>
+                    </div>
+                    <button type="button" class="btn btn-info block-form list-btn" data-toggle="collapse" data-target="#unpaid"><span class="list-btn">Unpaid Dues</span></button>
+                    <div id="unpaid" class="collapse">
+                         <?php
+                         $uid=$_SESSION['userId'];
+                        $conn = new mysqli("localhost", "root", "1234","web20");
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        $sql = "SELECT id, date,charge FROM dues WHERE uid=$uid AND paid_date IS NULL";
+                        $result = $conn-> query($sql);
+                        if($result-> num_rows >0){
+                            echo "<table class=\"table table-striped table-borderless\">";
+                            echo "<tr> <th>ID</th>
+                                <th>Date</th> 
+                                <th>Charge</th> 
+                                </tr>";
+                            while($row = $result->fetch_assoc()){
+                                echo "<tr><td>".$row['id']."</td><td>" .
+                                $row['date'] . "</td><td>".
+                                $row['charge']."</td>
+                                </tr>";
+                            }
+                            echo"</table>";
+                        } else {
+                            echo "there is no record!";
+                        }
+                        ?>
+                    </div>
       </div>
       </div>
       <div class="space"></div>
@@ -175,8 +170,8 @@
       </div>
       </footer>
   </div>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();

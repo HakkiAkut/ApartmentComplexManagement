@@ -16,14 +16,29 @@
       rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
     
   <title>Add Resident</title>
   <script type="text/javascript">
-        $(function () {
-            $('#datepicker1').datetimepicker({
-                format:'YYYY-MM-DD'
-            });
-        });
+$(document).ready(function(){
+
+$('.datepicker').datepicker({
+format: 'yyyy-mm-dd',
+autoclose: true,
+startDate: '0d'
+});
+
+$('.cell').click(function(){
+$('.cell').removeClass('select');
+$(this).addClass('select');
+});
+
+});
     </script>
     <script>
         if ( window.history.replaceState ) {
@@ -72,10 +87,10 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="#">Announcments</a>
+              <a  href="../announcements.html">Announcments</a>
             </li>
             <li class="top-nav-item">
-              <a  href="#">Documents</a>
+              <a  href="../document/dues.php">Documents</a>
             </li>
             <li class="top-nav-item">
                 <?php
@@ -85,14 +100,14 @@
                 ?>
               </li>
             <li class="top-nav-item">
-              <a  href="#">Management</a>
+              <a  href="../management.html">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
               <a  href="#">
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="contact.html">suggestion</a>
+                <a href="../contact.html">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
@@ -103,7 +118,7 @@
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Dues</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Add Resident</h2>
           <div class="space"></div>
           <?php
                         $nameError= $surnameError = $emailError = $usernameError=$pwdError=$dateError = $apartmentsError = $door_noError ="";
@@ -220,11 +235,11 @@
                                 <label for="date">Date of Entry</label> <span class="error">* <?php echo $dateError;?></span>
                                 <div class="form-group">
                                     <div class='input-group date' id='datepicker1'>
-                                        <input type='text' name="date" class="form-control" id="datepicker"/>
+                                    <input type="text" id="dp1" class="datepicker" name="date" readonly>
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
-                                    </div>
+                                    </input>
                                 </div>
 
                                 <label for="apartments">Apartment</label> <span class="error">* <?php echo $apartmentsError;?></span>  
@@ -287,7 +302,7 @@
       </div>
       </footer>
   </div>
-  <script src="../vendor/jquery/jquery.min.js"></script>
+
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
     $("#menu-toggle").click(function(e) {
