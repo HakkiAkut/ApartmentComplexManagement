@@ -43,6 +43,7 @@
         <a href="resident-list.php" class="list-group-item list-group-item-action ">Resident List</a>
         <a href="#" class="list-group-item list-group-item-action ">Due List</a>
         <a href="update-dues.php" class="list-group-item list-group-item-action ">Update Dues</a>
+        <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
 
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
@@ -138,7 +139,7 @@
                             $sql = $sql . "paid_date IS NULL";
                         }
                         if($_POST["month"]!=""){
-                            $mnth=$_POST["month"] . "-00";
+                            $mnth=$_POST["month"] . "-01";
                             $sql = $sql . " AND dues.date = '$mnth'";
                         }
                         if($_POST["apartments"]!="choose one"){

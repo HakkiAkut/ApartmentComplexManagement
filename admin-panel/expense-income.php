@@ -61,12 +61,12 @@ $(this).addClass('select');
     <div class="border-right left-panel" id="sidebar-wrapper">
       <div class="sidebar-heading">Home</div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action ">Add Resident</a>
+        <a href="add-resident.php" class="list-group-item list-group-item-action ">Add Resident</a>
         <a href="resident-list.php" class="list-group-item list-group-item-action ">Resident List</a>
         <a href="dues-list.php" class="list-group-item list-group-item-action ">Due List</a>
         <a href="update-dues.php" class="list-group-item list-group-item-action ">Update Dues</a>
         <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
-        
+
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
         </form>
@@ -119,100 +119,47 @@ $(this).addClass('select');
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Add Resident</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Add Expense/Income</h2>
           <div class="space"></div>
           <?php
-                        $nameError= $surnameError = $emailError = $usernameError=$pwdError=$dateError = $apartmentsError = $door_noError ="";
-                        $name= $surname = $email = $username = $pwd=$date = $apartments= $door_no = "";
+                        $dateError = $explanationError = $priceError ="";
+                        $explanation= $price = $date= "";
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            if (empty($_POST["name"])) {
-                              $nameError = "Name is required";
+                            if (empty($_POST["explanation"])) {
+                              $nameError = "explanation is required";
                             } else {
-                              $name = htmlspecialchars(stripslashes(trim($_POST["name"])));
-                              if (!preg_match("/^([a-zA-Z' ]+)$/",$name)) {
-                                $nameError = "Only letters are allowed";
+                              $explanation = htmlspecialchars(stripslashes(trim($_POST["explanation"])));
+                              if (!preg_match("/^([a-zA-Z' ]+)$/",$explanation)) {
+                                $explanationError = "Only letters are allowed";
                               }
                             }
-
-                            if (empty($_POST["surname"])) {
-                                $surnameError = "surname is required";
+                            if (empty($_POST["price"])) {
+                                $priceError = "price is required";
                               } else {
-                                $surname = htmlspecialchars(stripslashes(trim($_POST["surname"])));
-                                if (!preg_match("/^([a-zA-Z' ]+)$/",$surname)) {
-                                  $surnameError = "Only letters are allowed";
-                                }
-                              }
-                            
-                            if (empty($_POST["email"])) {
-                              $emailError = "Email is required";
-                            } else {
-                              $email = htmlspecialchars(stripslashes(trim($_POST["email"])));
-                                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                                    $emailError = "Invalid email address";
-                                }
-                            }
-                              
-                            if (empty($_POST["username"])) {
-                              $usernameError = "username is required";
-                            } else {
-                              $username = htmlspecialchars(stripslashes(trim($_POST["username"])));
-                                if(!preg_match('/^[a-zA-Z0-9]{6,}$/', $username)) { 
-                                    $usernameError="Username must be alphanumeric and at least have 6 characters";
-                                }
-                            }
-                            
-                            if (empty($_POST["pwd"])) {
-                                $pwdError = "password is required";
-                              } else {
-                                $pwd = htmlspecialchars(stripslashes(trim($_POST["pwd"])));
-                                if(!preg_match('/^\S*(?=\S{6,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/', $pwd)) { 
-                                    $pwdError="Password must be at least 6 character, and need at least 1 number,
-                                    1 uppercase character,
-                                    1 lowercase character";
-                                }
+                                $price = htmlspecialchars(stripslashes(trim($_POST["price"])));
                               }
                               if(empty($_POST["date"])){
                                 $dateError= "entry date is required";
                               }else {
                                   $date= $_POST["date"];
                               }
-                          
-                            if ($_POST["apartments"]=="choose one") {
-                              $apartmentsError = "apartments is required";
-                            } else {
-                              $apartments = htmlspecialchars(stripslashes(trim($_POST["apartments"])));
-                            }
-                            if ($_POST["door_no"]=="choose one") {
-                                $door_noError = "door no is required";
-                              } else {
-                                $door_no = htmlspecialchars(stripslashes(trim($_POST["door_no"])));
-                              }
-                            if($_POST["apartments"]!="choose one" && $_POST["door_no"]!="choose one"){
-                                $conn = new mysqli("localhost", "root", "1234","web20");
-                                if ($conn->connect_error) {
-                                    die("Connection failed: " . $conn->connect_error);
-                                  }
-                                  $sql = "SELECT * FROM user WHERE apartment='$apartments' AND house_no='$door_no' AND state='1'";
-                                  $query = $conn->query($sql);
-                                  if($query->num_rows>0){
-                                    $door_noError="there is already one resident for house $door_no/$apartments";
-                                  } 
-                            }
-                            if($nameError==''&&$surnameError==''&&$emailError==''&&$pwdError==''&&$dateError=='' &&$usernameError==''&&$apartmentsError==''&&$door_noError=='' ){
-                                $sql = "INSERT INTO user (name, surname, email, pwd, username, authority, apartment, house_no,state,date_of_entry)
-                                VALUES ('$name', '$surname', '$email', '$pwd', '$username', '0', '$apartments', '$door_no', '1','$date')";
+                            if($explanationError==''&&$priceError==''&&$dateError=='' ){
+                                $sql= "INSERT INTO ";
+                                if($_POST["table"]=="income"){
+                                    $sql = $sql . " incomes ";
+                                } else{
+                                    $sql = $sql . " expenses ";
+                                }
+                                $sql = $sql ."(explanation, price, date)
+                                VALUES ('$explanation', '$price','$date')";
                                 $conn = new mysqli("localhost", "root", "1234","web20");
                                 if ($conn->connect_error) {
                                     die("Connection failed: " . $conn->connect_error);
                                   }
                                   if ($conn->query($sql) === TRUE) {
                                     echo "New resident created successfully!";
-                                    $_POST['name']="";
-                                    $_POST['surname']="";
-                                    $_POST['email']="";
-                                    $_POST['username']="";
-                                    $_POST['pwd']="";
-                                    $_POST['date']="";
+                                    $_POST['explanation']="";
+                                    $_POST['price']="";
                                   } else {
                                     echo "Error: " . $conn->error;
                                   }
@@ -223,17 +170,11 @@ $(this).addClass('select');
                         <div class='col-sm-16'>
                         <div class="input-form">
                             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                                <label for="name">Name</label> <span class="error">* <?php echo $nameError;?></span>
-                                <input type="text"value="<?php echo (isset($_POST['name']))?$_POST['name']:'';?>" name="name" id="name">
-                                <label for="surname">Surname</label> <span class="error">* <?php echo $surnameError;?></span>
-                                <input type="text"value="<?php echo (isset($_POST['surname']))?$_POST['surname']:'';?>" name="surname">
-                                <label for="email">Email</label> <span class="error">* <?php echo $emailError;?></span>
-                                <input type="text"value="<?php echo (isset($_POST['email']))?$_POST['email']:'';?>" name="email">
-                                <label for="username">Username</label> <span class="error">* <?php echo $usernameError;?></span>
-                                <input type="text"value="<?php echo (isset($_POST['username']))?$_POST['username']:'';?>" name="username">
-                                <label for="pwd">Password</label> <span class="error">* <?php echo $pwdError;?></span>
-                                <input type="password"value="<?php echo (isset($_POST['pwd']))?$_POST['pwd']:'';?>" name="pwd">
-                                <label for="date">Date of Entry</label> <span class="error">* <?php echo $dateError;?></span>
+                                <label for="explanation">Explanation</label> <span class="error">* <?php echo $explanationError;?></span>
+                                <input type="text"value="<?php echo (isset($_POST['explanation']))?$_POST['explanation']:'';?>" name="explanation" id="explanation">
+                                <label for="price">Price</label> <span class="error">* <?php echo $priceError;?></span>
+                                <input type="text"value="<?php echo (isset($_POST['price']))?$_POST['price']:'';?>" name="price">
+                                <label for="date">Date</label> <span class="error">* <?php echo $dateError;?></span>
                                 <div class="form-group">
                                     <div class='input-group date' id='datepicker1'>
                                     <input type="text" id="dp1" class="datepicker" name="date" readonly>
@@ -242,25 +183,10 @@ $(this).addClass('select');
                                         </span>
                                     </input>
                                 </div>
-
-                                <label for="apartments">Apartment</label> <span class="error">* <?php echo $apartmentsError;?></span>  
-                                <?php 
-                                $apartments = array("choose one","A","B","C");
-                                echo "<select name=\"apartments\">";
-                                foreach($apartments as $value){
-                                    echo "<option> $value </option>";
-                                }
-                                echo "<select>";
-                                ?>
-                                <label for="door_no">door no:</label> <span class="error">* <?php echo $door_noError;?></span>
-                                <?php 
-                                $door_no = array("choose one",1,2,3,4,5,6,7,8,9,10,11,12);
-                                echo "<select name=\"door_no\">";
-                                foreach($door_no as $value){
-                                    echo "<option> $value </option>";
-                                }
-                                echo "<select>";
-                                ?>
+                                <input type="radio" id="male" name="table" value="income">
+                                <label for="male">Income</label><br>
+                                <input type="radio" id="female" name="table" value="expense" checked="checked">
+                                <label for="female">Expense</label><br>
                                 <input type="submit" name="submit" value="Submit">  
                             </form>
                         </div>

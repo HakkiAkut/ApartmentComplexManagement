@@ -71,7 +71,8 @@
         <a href="#" class="list-group-item list-group-item-action ">Resident List</a>
         <a href="dues-list.php" class="list-group-item list-group-item-action ">Due List</a>
         <a href="update-dues.php" class="list-group-item list-group-item-action ">Update Dues</a>
-
+        <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
+        
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
         </form>

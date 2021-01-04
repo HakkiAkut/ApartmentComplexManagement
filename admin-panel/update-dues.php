@@ -44,6 +44,7 @@
         <a href="resident-list.php" class="list-group-item list-group-item-action ">Resident List</a>
         <a href="dues-list.php" class="list-group-item list-group-item-action ">Due List</a>
         <a href="#" class="list-group-item list-group-item-action ">Update Dues</a>
+        <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
 
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
@@ -133,7 +134,7 @@
                                 }
                                 echo "<select>";
                                 ?>
-                      <input type="submit" name="submit" value="Submit">  
+                      <input type="submit" name="submit" value="Check">  
                     </form>
                     <?php
                     $uid="";
@@ -160,11 +161,14 @@
                         $sql="SELECT date,id,charge FROM dues WHERE uid=$uid AND paid_date IS NULL";
                         $query = $conn->query($sql);
                         if($query->num_rows>0){
+                          
                           echo '<div class="space"></div>' ;
                           echo"<form class='input-form' action='pay-due.php' method='POST'>";
                           while($row= $query->fetch_assoc()){
+                            $date1 = $row['date'];     
+                          $date= date('M-Y', strtotime($date1));
                             echo '<label class="label-input" for="'.$row['id'].'">';
-                            echo '<input type="checkbox" name="'.$row['id'].'">'.' '. $row['date']." - ".$row['charge']. ' TL' ;
+                            echo '<input type="checkbox" name="'.$row['id'].'">'.' '. $date." - ".$row['charge']. ' TL' ;
                             echo ' </label>';
                           }
                           echo'<input type="hidden"  name="id" value="'.$uid.'"  />';
