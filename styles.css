@@ -7,6 +7,7 @@
 
 html {
   font-size: 10px !important;
+  height: 100%;
 }
 body {
   font-family: 'Poppins', sans-serif !important;
@@ -14,6 +15,7 @@ body {
   font-weight: 400 !important;
   line-height: 1.5 !important;
   background-color: cornsilk !important;
+  height: 100%;
 }
 .page-container {
 position: relative;
@@ -21,7 +23,10 @@ min-height: 100vh;
 
 }
 .content-wrap {
-padding-bottom: 16rem; 
+
+min-height: 100%;
+margin-bottom: 16rem;
+position: relative;
 min-height: 70rem;
 /* Footer height */
 }
@@ -168,6 +173,37 @@ width: 100%;
 
 #wrapper.toggled #sidebar-wrapper {
 margin-left: -15rem;
+}
+}
+@media screen and (max-width: 768px) {
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 26rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    background-color: #8f422f !important;
+    color: #fff;
+    text-align: center;
+    }
+    footer h4 {
+      font-size: 1.8rem;
+    }
+    .col {
+    float: left;
+    width: 20%;	
+    padding: 1rem;
+    }
+    footer li {
+    display: block;
+    margin-right: 0.8rem;
+    }
+    .content-wrap {
+      padding-bottom: 26rem; 
+      height:auto;
+      /* Footer height */
+      }
 }
 /*header*/
 header {
@@ -431,5 +467,4 @@ input[type='checkbox'] {
 input[type='checkbox']:checked  {
     background: #36753b;
     color: #36753b;
-}
 }
