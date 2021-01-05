@@ -97,7 +97,8 @@ session_start();
             $name= $_SESSION["name"];
             $sql="INSERT INTO messages (uid,name,topic, message,date)
             VALUES($uid,'$name','$topic','$message',DATE(NOW()));";
-            if($conn->query($sql)===TRUE){
+            $result=$conn->query($sql);
+            if($result===TRUE){
               echo "Your message is sended";
             }
           }

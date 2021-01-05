@@ -67,6 +67,7 @@ $(this).addClass('select');
         <a href="update-dues.php" class="list-group-item list-group-item-action ">Update Dues</a>
         <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
         <a href="messages.php" class="list-group-item list-group-item-action ">Messages</a>
+        <a href="add-announcement.php" class="list-group-item list-group-item-action ">Add Announce</a>
 
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
@@ -157,8 +158,9 @@ $(this).addClass('select');
                                 if ($conn->connect_error) {
                                     die("Connection failed: " . $conn->connect_error);
                                   }
-                                  if ($conn->query($sql) === TRUE) {
-                                    echo "New resident created successfully!";
+                                  $result=$conn->query($sql);
+                                  if ($result === TRUE) {
+                                    echo "New expense/income added!";
                                     $_POST['explanation']="";
                                     $_POST['price']="";
                                   } else {

@@ -45,6 +45,7 @@
         <a href="update-dues.php" class="list-group-item list-group-item-action ">Update Dues</a>
         <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
         <a href="messages.php" class="list-group-item list-group-item-action ">Messages</a>
+        <a href="add-announcement.php" class="list-group-item list-group-item-action ">Add Announce</a>
 
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
@@ -101,8 +102,6 @@
           <h2 style="margin-left: 20px; color: saddlebrown;">Due List</h2>
           <div class="space"></div>
           <form class="input-form"  method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                        
-                        
                         <label for="month-list">month</label><span style="font-size: 11px;">*leave blank for all months</span>
                         <input type="month" name="month" id="month-list">
                         <label for="apartments">Apartment</label> 

@@ -16,14 +16,13 @@
       rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet">
-  <title>Update Dues</title>
+  <title>Add Announcements</title>
     <script type='text/javascript'>
         if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
         }
     </script>
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -43,11 +42,11 @@
         <a href="add-resident.php" class="list-group-item list-group-item-action ">Add Resident</a>
         <a href="resident-list.php" class="list-group-item list-group-item-action ">Resident List</a>
         <a href="dues-list.php" class="list-group-item list-group-item-action ">Due List</a>
-        <a href="#" class="list-group-item list-group-item-action ">Update Dues</a>
+        <a href="update-dues.php" class="list-group-item list-group-item-action ">Update Dues</a>
         <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
         <a href="messages.php" class="list-group-item list-group-item-action ">Messages</a>
-        <a href="add-announcement.php" class="list-group-item list-group-item-action ">Add Announce</a>
-        
+        <a href="#" class="list-group-item list-group-item-action ">Add Announce</a>
+
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
         </form>
@@ -100,106 +99,38 @@
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Add Dues</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Add Announcements</h2>
           <div class="space"></div>
-          <?php
-          if ( isset($_GET['success'])  ){
-            if($_GET['success'] == 1){
-              echo "Dues are added";
-            }else if($_GET['success'] == 2){
-              echo "Dues are payed";
-            } 
+          <form class="input-form" method="post">
+            <label for="topic">Topic</label> <br>
+            <input type="text" id="topic" name="topic">
+            <br>
+            <label for="announcement">Announcement</label> <br>
+            <textarea name="announcement"></textarea>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          
+          if(empty($_POST["topic"])||empty($_POST["announcement"])){
+            echo "topic and message con not be blank";
+          } else{
+            $topic=htmlspecialchars(stripslashes(trim($_POST["topic"])));
+            $announcement=htmlspecialchars(stripslashes(trim($_POST["announcement"])));
+            $conn = new mysqli("localhost", "root", "1234","web20");
+            if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
+            }
+            $sql="INSERT INTO announcements (topic, announcement,date)
+            VALUES('$topic','$announcement',DATE(NOW()));";
+            $result=$conn->query($sql);
+            if($result===TRUE){
+              echo "Your announcement is sended";
+            }
           }
-          if(isset($_GET['error'])){
-            if($_GET['error'] == 1){
-              echo "Dues already added or empty dues form";
-            } else if($_GET['error'] == 2){
-              echo "Dues couldn't payed";
-            } 
-          }
-          ?>
-          <form class="input-form"  action="add-due.php" method="post">
-                        <div class="inline-form">
-                            <label class="label-input" for="charge">Charge</label>
-                            <input class="label-input" type="text" name="charge" id="charge" value="30">
-                        </div>
-                        <div class="inline-form">
-                        <label class="label-input" for="month">Date</label>
-                        <input type="month" name="month" id="month">
-                        </div>
-                        <div class="inline-form">
-                        <input type="submit" id="add-due" value="add due" name="add-due">
-                        </div>
-                    </form>
-                    <h2 style="margin-left: 20px; color: saddlebrown;">Pay Dues</h2>
-                    <div class="space"></div>
-                    <form class="input-form" method="post">
-                    <label for="apartments">Apartment</label>
-                                <?php 
-                                $apartments = array("choose one","A","B","C");
-                                echo "<select name=\"apartments\">";
-                                foreach($apartments as $value){
-                                    echo "<option> $value </option>";
-                                }
-                                echo "<select>";
-                                ?>
-                                <label for="door_no">door no:</label>
-                                <?php 
-                                $door_no = array("choose one",1,2,3,4,5,6,7,8,9,10,11,12);
-                                echo "<select name=\"door_no\">";
-                                foreach($door_no as $value){
-                                    echo "<option> $value </option>";
-                                }
-                                echo "<select>";
-                                ?>
-                      <input type="submit" name="submit" value="Check">  
-                    </form>
-                    <?php
-                    $uid="";
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                      if (empty($_POST["apartments"])||empty($_POST["door_no"])) {
-                        echo"Apartment and door no must be picked!";
-                      } else{
-                        $conn = new mysqli("localhost", "root", "1234","web20");
-                        if ($conn->connect_error) {                         
-                          die("Connection failed: " . $conn->connect_error);
-                      }
-                      $apt=$_POST["apartments"];
-                      $door = $_POST["door_no"];
-                      $sql="SELECT id FROM user WHERE apartment='$apt' AND house_no='$door' AND state=1";
-                      
-                      $query = $conn->query($sql);
-                      if($query->num_rows>0){
-                        $row= $query->fetch_assoc();
-                        $uid =$row['id'];
-                      }
-                      if($uid==""){
-                        echo "there is no unpaid dues!";
-                      }else{
-                        $sql="SELECT date,id,charge FROM dues WHERE uid=$uid AND paid_date IS NULL";
-                        $query = $conn->query($sql);
-                        if($query->num_rows>0){
-                          
-                          echo '<div class="space"></div>' ;
-                          echo"<form class='input-form' action='pay-due.php' method='POST'>";
-                          while($row= $query->fetch_assoc()){
-                            $date1 = $row['date'];     
-                          $date= date('M-Y', strtotime($date1));
-                            echo '<label class="label-input" for="'.$row['id'].'">';
-                            echo '<input type="checkbox" name="'.$row['id'].'">'.' '. $date." - ".$row['charge']. ' TL' ;
-                            echo ' </label>';
-                          }
-                          echo'<input type="hidden"  name="id" value="'.$uid.'"  />';
-                          echo'<input type="submit" name="submit" value="Pay"> ';
-                          echo"</form>";
-                        }else{
-                          echo "there is no unpaid dues!";
-                        }
-                      }
-                      }
-                      }
-                    ?>
-
+        }
+        ?>
         </div>
       </div>
       <div class="space"></div>
@@ -236,8 +167,6 @@
           </ul>
       </div>
       </footer>
-
-
   </div>
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

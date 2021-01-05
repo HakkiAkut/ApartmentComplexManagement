@@ -25,8 +25,22 @@
     <div class="border-right left-panel" id="sidebar-wrapper">
       <div class="sidebar-heading">Announce</div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action ">Meeting</a>
-        <a href="#" class="list-group-item list-group-item-action ">Covid-19 Rules</a>
+        <?php
+        $conn = new mysqli("localhost", "root", "1234","web20");
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
+          $sql="SELECT * FROM announcements ORDER BY id DESC LIMIT 10";
+          $result=$conn->query($sql);
+          if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+              $topic=$row['topic'];
+              $id=$row['id'];
+              echo'<a href="announcements.php?announce='.$id.'" class="list-group-item list-group-item-action ">'.$topic.'</a>';
+            }
+          }
+
+        ?>
       </div>
     </div>
     <div id="page-content-wrapper" class="content-wrap">
@@ -68,18 +82,24 @@
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Meeting</h2>
-          <div class="space"></div>
-          <p style="padding-top: 10px;">
-            There would be a meeting on 10/11/2020. <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium eligendi porro ullam harum
-            voluptatem eaque, sint, qui perspiciatis blanditiis accusantium nihil ratione, recusandae
-            provident consectetur enim ab laboriosam fugit rem?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, quo incidunt voluptas vero
-            hic explicabo aliquid sapiente dolor non architecto facilis eius blanditiis, facere itaque.
-            Odio, hic reprehenderit. Eos, temporibus!
-        </p>
-        <div class="space"></div>
+          <?php
+          $sql2="SELECT * FROM announcements ";
+          if (isset($_GET['announce'])){
+            $sql2=$sql2."WHERE id=".$_GET['announce'];     
+          } else{
+            $sql2= $sql2 . "ORDER BY id DESC LIMIT 1";
+          }
+          $result2=$conn->query($sql2);
+          if($result2->num_rows>0){
+            $row2=$result2->fetch_assoc();
+            echo'<h2 style="margin-left: 20px; color: saddlebrown;">'.$row2["topic"].'</h2>';
+            echo'<div class="space"></div>';
+            echo'<p style="padding-top: 10px;">';
+            echo $row2['announcement'];
+            echo'</p>';
+            echo'<div class="space"></div>';
+          }
+          ?>
       </div>
       </div>
       <div class="space"></div>

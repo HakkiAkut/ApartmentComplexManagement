@@ -3,7 +3,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST["month"])) {
         $month= $_POST["month"] . "-01";
-        $charge= $_POST["charge"];
+        $charge= htmlspecialchars(stripslashes(trim($_POST["charge"])));
         $conn = new mysqli("localhost", "root", "1234","web20");
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
