@@ -51,7 +51,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="../announcements.html">Announcments</a>
+              <a  href="../announcements.php">Announecments</a>
             </li>
             <li class="top-nav-item">
               <a  href="#">Documents</a>
@@ -64,7 +64,7 @@
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="../contact.html">suggestion</a>
+                <a href="../contact.php">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>

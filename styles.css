@@ -333,30 +333,6 @@ align-content: center;
   width: 80%;
 }
 /*contact*/
-.main-panel#contact-main {
-float: right;
-width: 55%;
-}
-.left-panel#contact-left {
-float: left;
-width: 26%;
-}
-.main-panel textarea {
-width: 50%;
-padding: 12px;
-border: .3rem solid #7EA172;
-margin-top: 6px;
-margin-bottom: 16px;
-resize: vertical;
-color: #502419;
-border-radius: 2%;
-}
-.main-panel textarea#message {
-height: 20rem;
-}
-.main-panel textarea#topic {
-height: 5rem;
-}
 .main-panel textarea:hover {
 border: .4rem solid #502419;
 }
@@ -412,7 +388,7 @@ list-style-type: none;
 display: inline-block;
 padding-right: 10rem;
 }
-.input-form input[type=text], .input-form input[type=password],.input-form input[type=month], .input-form select {
+.input-form input[type=text], .input-form input[type=password],.input-form input[type=month], .input-form select, textarea {
 width: 100% !important;
 padding: 1.2rem 1.2rem !important;
 align-content: center;

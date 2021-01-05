@@ -14,7 +14,7 @@
       rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet">
-  <title>Contact</title>
+  <title>Announcements</title>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
@@ -23,9 +23,10 @@
 
   <div class="d-flex page-container" id="wrapper">
     <div class="border-right left-panel" id="sidebar-wrapper">
-      <div class="sidebar-heading">Contact</div>
+      <div class="sidebar-heading">Announce</div>
       <div class="list-group list-group-flush">
-        <a href="#contact" class="list-group-item list-group-item-action ">Contact</a>
+        <a href="#" class="list-group-item list-group-item-action ">Meeting</a>
+        <a href="#" class="list-group-item list-group-item-action ">Covid-19 Rules</a>
       </div>
     </div>
     <div id="page-content-wrapper" class="content-wrap">
@@ -43,7 +44,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="announcements.html">Announcments</a>
+              <a  href="#">Announcements</a>
             </li>
             <li class="top-nav-item">
               <a  href="document/dues.php">Documents</a>
@@ -52,11 +53,11 @@
               <a  href="management.html">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
-              <a  href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a  href="contact.php"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="contact.html">suggestion</a>
+                <a href="contact.php">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
@@ -67,18 +68,18 @@
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Contact Form</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Meeting</h2>
           <div class="space"></div>
-
-        <form action="/file.php">
-            <label for="topic">Topic</label> <br>
-            <textarea rows="2" cols="25" placeholder="write your topic" id="topic" name="topic"></textarea>
-            <br>
-            <label for="message">Message</label> <br>
-            <textarea rows="2" cols="25" placeholder="write your suggestion" id="message" name="message"></textarea>
-            <br>
-            <input type="submit" value="Submit">
-        </form>
+          <p style="padding-top: 10px;">
+            There would be a meeting on 10/11/2020. <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium eligendi porro ullam harum
+            voluptatem eaque, sint, qui perspiciatis blanditiis accusantium nihil ratione, recusandae
+            provident consectetur enim ab laboriosam fugit rem?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, quo incidunt voluptas vero
+            hic explicabo aliquid sapiente dolor non architecto facilis eius blanditiis, facere itaque.
+            Odio, hic reprehenderit. Eos, temporibus!
+        </p>
+        <div class="space"></div>
       </div>
       </div>
       <div class="space"></div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-    session_start();
+session_start();
 ?>
 <head>
   <meta charset="UTF-8">
@@ -16,38 +16,28 @@
       rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet">
-  <title>Home Page</title>
+  <title>Contact</title>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
+
 <body>
-<?php
-    if(!isset($_SESSION["name"])){
-        header("location: index.html");
-    }
-    ?>
+
   <div class="d-flex page-container" id="wrapper">
     <div class="border-right left-panel" id="sidebar-wrapper">
-      <div class="sidebar-heading">Home</div>
+      <div class="sidebar-heading">Contact</div>
       <div class="list-group list-group-flush">
-        <a href="announcements.php" class="list-group-item list-group-item-action ">Announcements</a>
-        <a href="document/dues.php" class="list-group-item list-group-item-action ">Dues</a>
-        <a href="document/expense-income-list.php" class="list-group-item list-group-item-action ">Expense/Income</a>
-        <a href="management.html" class="list-group-item list-group-item-action ">Management</a>
-        <a href="contact.php" class="list-group-item list-group-item-action ">Contact</a>
-        <form action="logout.php" method="post">
-            <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
-        </form>
+        <a href="#contact" class="list-group-item list-group-item-action ">Contact</a>
       </div>
     </div>
     <div id="page-content-wrapper" class="content-wrap">
-
       <nav class="navbar navbar-expand-lg navbar-light clear-div border-bottom top-nav-menu">
         <button style="background-color: rgb(143, 75, 58);border: saddlebrown;" class="btn btn-primary" id="menu-toggle"><i class="fa fa-caret-right"></i></button>
         <div id="logo-container">
           <a href="home-page.php" class="logo">
               Akdeniz Apartment Complex
           </a>
-        </div>
+      </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -61,13 +51,6 @@
               <a  href="document/dues.php">Documents</a>
             </li>
             <li class="top-nav-item">
-                <?php
-                    if($_SESSION["authority"]==1){
-                      echo '<a href="admin-panel/add-resident.php" class="top-nav-link">Admin</a>';
-                    }
-                ?>
-              </li>
-            <li class="top-nav-item">
               <a  href="management.html">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
@@ -75,7 +58,7 @@
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="contact.php">suggestion</a>
+                <a href="contact.html">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
@@ -83,24 +66,43 @@
           </ul>
         </div>
       </nav>
+
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Gallery</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Contact Form</h2>
           <div class="space"></div>
-          <div class="slides">
-                        <div>
-                          <img src="img/image1.jpg" alt="">
-                        </div>
-                        <div>
-                          <img src="img/image2.jpg" alt="">
-                        </div>
-                        <div>
-                          <img src="img/image3.jpg" alt="">
-                        </div>
-                        <div>
-                          <img src="img/image4.jpg" alt="">
-                        </div>
-                      </div>
+
+        <form class="input-form" method="post">
+            <label for="topic">Topic</label> <br>
+            <input type="text" id="topic" name="topic">
+            <br>
+            <label for="message">Message</label> <br>
+            <textarea name="message"></textarea>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          
+          if(empty($_POST["topic"])||empty($_POST["message"])){
+            echo "topic and message con not be blank";
+          } else{
+            $topic=htmlspecialchars(stripslashes(trim($_POST["topic"])));
+            $message=htmlspecialchars(stripslashes(trim($_POST["message"])));
+            $conn = new mysqli("localhost", "root", "1234","web20");
+            if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
+            }
+            $uid= $_SESSION["userId"];
+            $name= $_SESSION["name"];
+            $sql="INSERT INTO messages (uid,name,topic, message,date)
+            VALUES($uid,'$name','$topic','$message',DATE(NOW()));";
+            if($conn->query($sql)===TRUE){
+              echo "Your message is sended";
+            }
+          }
+        }
+        ?>
       </div>
       </div>
       <div class="space"></div>

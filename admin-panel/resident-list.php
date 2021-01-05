@@ -65,13 +65,14 @@
 ?>
   <div class="d-flex page-container" id="wrapper">
     <div class="border-right left-panel" id="sidebar-wrapper">
-      <div class="sidebar-heading">Home</div>
+      <div class="sidebar-heading">Admin</div>
       <div class="list-group list-group-flush">
         <a href="add-resident.php" class="list-group-item list-group-item-action ">Add Resident</a>
         <a href="#" class="list-group-item list-group-item-action ">Resident List</a>
         <a href="dues-list.php" class="list-group-item list-group-item-action ">Due List</a>
         <a href="update-dues.php" class="list-group-item list-group-item-action ">Update Dues</a>
         <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
+        <a href="messages.php" class="list-group-item list-group-item-action ">Messages</a>
 
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
@@ -94,7 +95,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="../announcements.html">Announcments</a>
+              <a  href="../announcements.php">Announcements</a>
             </li>
             <li class="top-nav-item">
               <a  href="../document/dues.php">Documents</a>
@@ -114,7 +115,7 @@
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="../contact.html">suggestion</a>
+                <a href="../contact.php">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
@@ -174,12 +175,13 @@
                                 <th>House</th> 
                                 <th>Entry Date</th>
                                 <th>Departure Date</th>
-                                <th>Action</th></tr>";
+                                </tr>";
                             while($row = $result->fetch_assoc()){
                                 echo "<tr><td>".$row['id']."</td><td>" . $row['name'] . " " .$row['surname'] . "</td><td>".
                                 $row['apartment']."/".$row['house_no']."</td><td>".
                                 $row['date_of_entry']."</td><td>".
-                                $row['date_of_departure'] . "</td></tr>";
+                                $row['date_of_departure'] . "</td>
+                                <td><a class=\"delete\" title=\"Delete\" data-toggle=\"tooltip\"><i class=\"material-icons\"></i></a></td></tr>";
                             }
                             echo"</table>";
                         } else {
@@ -203,12 +205,13 @@
                                 <th>House</th> 
                                 <th>Entry Date</th>
                                 <th>Departure Date</th>
-                                <th>Action</th></tr>";
+                                </tr>";
                             while($row = $result->fetch_assoc()){
                                 echo "<tr><td>".$row['id']."</td><td>" . $row['name'] . " " .$row['surname'] . "</td><td>".
                                 $row['apartment']."/".$row['house_no']."</td><td>".
                                 $row['date_of_entry']."</td><td>".
-                                $row['date_of_departure'] . "</td></tr>";
+                                $row['date_of_departure'] . "</td>
+                                <td><a class=\"delete\" title=\"Delete\" data-toggle=\"tooltip\"><i class=\"material-icons\"></i></a></td></tr>";
                             }
                             echo"</table>";
                         } else {

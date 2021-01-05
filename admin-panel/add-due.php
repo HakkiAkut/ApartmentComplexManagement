@@ -1,33 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 <?php 
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST["month"])) {
         $month= $_POST["month"] . "-01";
         $charge= $_POST["charge"];
-        echo "bu yazı doğru demek $month";
         $conn = new mysqli("localhost", "root", "1234","web20");
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
+        }
+        $sqlCheck="SELECT * FROM dues WHERE date='$month'";
+        $query=$conn->query($sqlCheck);
+        if($query->num_rows>0){
+            header("location: update-dues.php?error=1");
+            $conn->close();
         }
         $sql = "INSERT INTO dues (uid,date,charge)
             SELECT id,'$month',$charge
             FROM user
             WHERE state=1";
             if ($conn->query($sql) === TRUE) {
-                header("location: update-dues.php");
+                header("location: update-dues.php?success=1");
+                $conn->close();
+              } else{
+                header("location: update-dues.php?error=1");
+                $conn->close();
               }
       }
 }
 ?>
-</body>
-</html>
+
 
 

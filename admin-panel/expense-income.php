@@ -59,13 +59,14 @@ $(this).addClass('select');
 ?>
   <div class="d-flex page-container" id="wrapper">
     <div class="border-right left-panel" id="sidebar-wrapper">
-      <div class="sidebar-heading">Home</div>
+      <div class="sidebar-heading">Admin</div>
       <div class="list-group list-group-flush">
         <a href="add-resident.php" class="list-group-item list-group-item-action ">Add Resident</a>
         <a href="resident-list.php" class="list-group-item list-group-item-action ">Resident List</a>
         <a href="dues-list.php" class="list-group-item list-group-item-action ">Due List</a>
         <a href="update-dues.php" class="list-group-item list-group-item-action ">Update Dues</a>
         <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
+        <a href="messages.php" class="list-group-item list-group-item-action ">Messages</a>
 
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
@@ -88,7 +89,7 @@ $(this).addClass('select');
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="../announcements.html">Announcments</a>
+              <a  href="../announcements.php">Announcements</a>
             </li>
             <li class="top-nav-item">
               <a  href="../document/dues.php">Documents</a>
@@ -108,7 +109,7 @@ $(this).addClass('select');
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="../contact.html">suggestion</a>
+                <a href="../contact.php">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>

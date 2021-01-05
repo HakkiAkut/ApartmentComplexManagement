@@ -38,14 +38,15 @@
 ?>
   <div class="d-flex page-container" id="wrapper">
     <div class="border-right left-panel" id="sidebar-wrapper">
-      <div class="sidebar-heading">Home</div>
+      <div class="sidebar-heading">Admin</div>
       <div class="list-group list-group-flush">
         <a href="add-resident.php" class="list-group-item list-group-item-action ">Add Resident</a>
         <a href="resident-list.php" class="list-group-item list-group-item-action ">Resident List</a>
         <a href="dues-list.php" class="list-group-item list-group-item-action ">Due List</a>
         <a href="#" class="list-group-item list-group-item-action ">Update Dues</a>
         <a href="expense-income.php" class="list-group-item list-group-item-action ">Expense/Income</a>
-
+        <a href="messages.php" class="list-group-item list-group-item-action ">Messages</a>
+        
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
         </form>
@@ -67,7 +68,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="../announcements.html">Announcments</a>
+              <a  href="../announcements.php">Announcements</a>
             </li>
             <li class="top-nav-item">
               <a  href="../document/dues.php">Documents</a>
@@ -87,7 +88,7 @@
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="../contact.html">suggestion</a>
+                <a href="../contact.php">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
@@ -100,6 +101,22 @@
         <div class="main-panel">
           <h2 style="margin-left: 20px; color: saddlebrown;">Add Dues</h2>
           <div class="space"></div>
+          <?php
+          if ( isset($_GET['success'])  ){
+            if($_GET['success'] == 1){
+              echo "Dues are added";
+            }else if($_GET['success'] == 2){
+              echo "Dues are payed";
+            } 
+          }
+          if(isset($_GET['error'])){
+            if($_GET['error'] == 1){
+              echo "Dues already added or empty dues form";
+            } else if($_GET['error'] == 2){
+              echo "Dues couldn't payed";
+            } 
+          }
+          ?>
           <form class="input-form"  action="add-due.php" method="post">
                         <div class="inline-form">
                             <label class="label-input" for="charge">Charge</label>
