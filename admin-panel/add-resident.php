@@ -183,6 +183,7 @@ $(this).addClass('select');
                                     1 uppercase character,
                                     1 lowercase character";
                                 }
+                                $pwd=sha1($pwd);
                               }
                               if(empty($_POST["date"])){
                                 $dateError= "entry date is required";
@@ -212,8 +213,9 @@ $(this).addClass('select');
                                   } 
                             }
                             if($nameError==''&&$surnameError==''&&$emailError==''&&$pwdError==''&&$dateError=='' &&$usernameError==''&&$apartmentsError==''&&$door_noError=='' ){
+                                $authority=$_POST["authority"];
                                 $sql = "INSERT INTO user (name, surname, email, pwd, username, authority, apartment, house_no,state,date_of_entry)
-                                VALUES ('$name', '$surname', '$email', '$pwd', '$username', '0', '$apartments', '$door_no', '1','$date')";
+                                VALUES ('$name', '$surname', '$email', '$pwd', '$username', '$authority', '$apartments', '$door_no', '1','$date')";
                                 $conn = new mysqli("localhost", "root", "1234","web20");
                                 if ($conn->connect_error) {
                                     die("Connection failed: " . $conn->connect_error);
@@ -274,6 +276,10 @@ $(this).addClass('select');
                                 }
                                 echo "<select>";
                                 ?>
+                                <input type="radio" id="admin" name="authority" value="1">
+                                <label for="admin">Admin</label><br>
+                                <input type="radio" id="user" name="authority" value="0" checked="checked">
+                                <label for="user">User</label><br>
                                 <input type="submit" name="submit" value="Submit">  
                             </form>
                         </div>

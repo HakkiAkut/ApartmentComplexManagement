@@ -62,7 +62,7 @@
             <li class="top-nav-item">
                 <?php
                     if($_SESSION["authority"]==1){
-                      echo '<a href="add-resident.php" class="top-nav-link">Admin</a>';
+                      echo '<a href="admin-panel/add-resident.php" class="top-nav-link">Admin</a>';
                     }
                 ?>
               </li>
@@ -104,8 +104,10 @@
                                 <th>Charge</th> 
                                 </tr>";
                             while($row = $result->fetch_assoc()){
+                              $date1 = $row['date'];     
+                                $date= date('M-Y', strtotime($date1));
                                 echo "<tr><td>".$row['id']."</td><td>" .
-                                $row['date'] . "</td><td>".
+                                $date . "</td><td>".
                                 $row['charge']."</td>
                                 </tr>";
                             }

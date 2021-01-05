@@ -45,7 +45,7 @@
             <li class="top-nav-item">
                 <?php
                     if($_SESSION["authority"]==1){
-                      echo '<a href="add-resident.php" class="top-nav-link">Admin</a>';
+                      echo '<a href="admin-panel/add-resident.php" class="top-nav-link">Admin</a>';
                     }
                 ?>
               </li>

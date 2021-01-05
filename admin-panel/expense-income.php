@@ -23,7 +23,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
     
-  <title>Add Resident</title>
+  <title>Add Expense/Income</title>
   <script type="text/javascript">
 $(document).ready(function(){
 
@@ -186,10 +186,10 @@ $(this).addClass('select');
                                         </span>
                                     </input>
                                 </div>
-                                <input type="radio" id="male" name="table" value="income">
-                                <label for="male">Income</label><br>
-                                <input type="radio" id="female" name="table" value="expense" checked="checked">
-                                <label for="female">Expense</label><br>
+                                <input type="radio" id="income" name="table" value="income">
+                                <label for="income">Income</label><br>
+                                <input type="radio" id="expense" name="table" value="expense" checked="checked">
+                                <label for="expense">Expense</label><br>
                                 <input type="submit" name="submit" value="Submit">  
                             </form>
                         </div>

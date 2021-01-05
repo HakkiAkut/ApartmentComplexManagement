@@ -31,7 +31,7 @@
           if($_POST['username']!="" and $_POST['password']!=""){
               $username=$_POST['username'];
               $pwd=$_POST['password'];
-    
+              $pwd=sha1($pwd);
               $conn = new mysqli("localhost", "root", "1234","web20");
               if ($conn->connect_error) {
                   die("Connection failed: " . $conn->connect_error);
