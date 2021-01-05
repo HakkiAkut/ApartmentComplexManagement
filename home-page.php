@@ -71,7 +71,7 @@
               <a  href="management.html">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
-              <a  href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a  href="contact.php"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">

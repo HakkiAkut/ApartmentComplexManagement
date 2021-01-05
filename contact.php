@@ -56,7 +56,7 @@
             <li class="top-nav-item">
                 <?php
                     if($_SESSION["authority"]==1){
-                      echo '<a href="admin" class="top-nav-link">Admin</a>';
+                      echo '<a href="admin-panel/add-resident.php" class="top-nav-link">Admin</a>';
                     }
                 ?>
               </li>
@@ -68,7 +68,7 @@
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="contact.html">suggestion</a>
+                <a href="#">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
