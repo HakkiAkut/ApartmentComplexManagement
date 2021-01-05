@@ -32,7 +32,7 @@
         <a href="announcements.php" class="list-group-item list-group-item-action ">Announcements</a>
         <a href="document/dues.php" class="list-group-item list-group-item-action ">Dues</a>
         <a href="document/expense-income-list.php" class="list-group-item list-group-item-action ">Expense/Income</a>
-        <a href="management.html" class="list-group-item list-group-item-action ">Management</a>
+        <a href="management.php" class="list-group-item list-group-item-action ">Management</a>
         <a href="contact.php" class="list-group-item list-group-item-action ">Contact</a>
         <form action="logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>

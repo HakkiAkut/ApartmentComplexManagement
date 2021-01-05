@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+    session_start();
+    if(!isset($_SESSION["name"])){
+      header("location: index.html");
+  }
+?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +42,13 @@
             <li class="top-nav-item">
               <a  href="document/dues.php">Documents</a>
             </li>
+            <li class="top-nav-item">
+                <?php
+                    if($_SESSION["authority"]==1){
+                      echo '<a href="add-resident.php" class="top-nav-link">Admin</a>';
+                    }
+                ?>
+              </li>
             <li class="top-nav-item">
               <a  href="#">Management</a>
             </li>

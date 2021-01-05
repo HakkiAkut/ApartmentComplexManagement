@@ -109,7 +109,7 @@
                 ?>
               </li>
             <li class="top-nav-item">
-              <a  href="../management.html">Management</a>
+              <a  href="../management.php">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
               <a  href="#">
