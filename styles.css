@@ -23,10 +23,7 @@ min-height: 100vh;
 
 }
 .content-wrap {
-
-min-height: 100%;
-margin-bottom: 16rem;
-position: relative;
+padding-bottom: 16rem;
 min-height: 70rem;
 /* Footer height */
 }
