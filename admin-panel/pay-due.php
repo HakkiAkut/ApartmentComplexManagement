@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-    header("location: update-dues.php?success=1");
+    header("location: update-dues.php?success=2");
     $conn->close();
 }
 ?>
