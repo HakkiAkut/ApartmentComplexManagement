@@ -70,11 +70,11 @@
               <a  href="../management.php">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
-              <a  href="../contact.php"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a  href="../contact/send-messages.php"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="../contact.php">suggestion</a>
+                <a href="../contact/send-messages.php">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>

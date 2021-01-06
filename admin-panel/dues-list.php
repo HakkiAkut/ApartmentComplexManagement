@@ -88,7 +88,7 @@
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="../contact.php">suggestion</a>
+                <a href="../contact/send-messages.php">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>

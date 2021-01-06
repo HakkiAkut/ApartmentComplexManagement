@@ -19,24 +19,19 @@
       rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet">
-  <title>Docs</title>
+  <title>Contact</title>
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
 <body>
-<?php
-    if(!isset($_SESSION["name"])){
-        header("location: index.html");
-    }
-    ?>
 
   <div class="d-flex page-container" id="wrapper">
     <div class="border-right left-panel" id="sidebar-wrapper">
-      <div class="sidebar-heading">Docs</div>
+      <div class="sidebar-heading">Contact</div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action ">Dues</a>
-        <a href="expense-income-list.php" class="list-group-item list-group-item-action ">Expense/Income</a>
+        <a href="send-messages.php" class="list-group-item list-group-item-action ">Contact</a>
+        <a href="#" class="list-group-item list-group-item-action ">My messages</a>
       </div>
     </div>
     <div id="page-content-wrapper" class="content-wrap">
@@ -57,7 +52,7 @@
               <a  href="../announcements.php">Announcements</a>
             </li>
             <li class="top-nav-item">
-              <a  href="#">Documents</a>
+              <a  href="../document/dues.php">Documents</a>
             </li>
             <li class="top-nav-item">
                 <?php
@@ -70,11 +65,11 @@
               <a  href="../management.php">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
-              <a  href="../contact/send-messages.php"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a  href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="../contact/send-messages.php">suggestion</a>
+                <a href="#">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>
@@ -85,68 +80,35 @@
 
       <div class="container-fluid">
         <div class="main-panel">
-          <h2 style="margin-left: 20px; color: saddlebrown;">Dues</h2>
+          <h2 style="margin-left: 20px; color: saddlebrown;">Contact Form</h2>
           <div class="space"></div>
-          <button type="button" class="btn btn-info block-form list-btn" data-toggle="collapse" data-target="#paid"><span class="list-btn">Paid Dues</span></button>
-                    <div id="paid" class="collapse">
-                         <?php
-                         $uid=$_SESSION['userId'];
-                        $conn = new mysqli("localhost", "root", "1234","web20");
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
-                        }
-                        $sql = "SELECT id, date,charge FROM dues WHERE uid=$uid AND paid_date IS NOT NULL";
-                        $result = $conn-> query($sql);
-                        if($result-> num_rows >0){
-                            echo "<table class=\"table table-striped table-borderless\">";
-                            echo "<tr> <th>ID</th>
-                                <th>Date</th> 
-                                <th>Charge</th> 
-                                </tr>";
-                            while($row = $result->fetch_assoc()){
-                              $date1 = $row['date'];     
-                                $date= date('M-Y', strtotime($date1));
-                                echo "<tr><td>".$row['id']."</td><td>" .
-                                $date . "</td><td>".
-                                $row['charge']."</td>
-                                </tr>";
-                            }
-                            echo"</table>";
-                        } else {
-                            echo "there is no record!";
-                        }
-                        ?>
-                    </div>
-                    <button type="button" class="btn btn-info block-form list-btn" data-toggle="collapse" data-target="#unpaid"><span class="list-btn">Unpaid Dues</span></button>
-                    <div id="unpaid" class="collapse">
-                         <?php
-                         $uid=$_SESSION['userId'];
-                        $conn = new mysqli("localhost", "root", "1234","web20");
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
-                        }
-                        $sql = "SELECT id, date,charge FROM dues WHERE uid=$uid AND paid_date IS NULL";
-                        $result = $conn-> query($sql);
-                        if($result-> num_rows >0){
-                            echo "<table class=\"table table-striped table-borderless\">";
-                            echo "<tr> <th>ID</th>
-                                <th>Date</th> 
-                                <th>Charge</th> 
-                                </tr>";
-                            while($row = $result->fetch_assoc()){
-                              $date1 = $row['date'];     
-                                $date= date('M-Y', strtotime($date1));
-                                echo "<tr><td>".$row['id']."</td><td>" .
-                                $date . "</td><td>".
-                                $row['charge']."</td>
-                                </tr>";
-                            }
-                            echo"</table>";
-                        } else {
-                            echo "there is no record!";
-                        }
-                        ?>
-                    </div>
+
+          <?php
+          $id= $_SESSION['userId'];
+          $conn = new mysqli("localhost", "root", "1234","web20");
+          if ($conn->connect_error) {                         
+              die("Connection failed: " . $conn->connect_error);
+          }
+          $sql="SELECT * FROM messages WHERE uid=$id ORDER BY id DESC LIMIT 10 ";
+          $query = $conn->query($sql);
+          if($query->num_rows>0){
+            echo "<table class=\"table table-striped table-borderless\">";
+            echo "<tr> <th>ID</th>
+                <th>Topic</th>
+                <th>Message</th>
+                <th>Date</th> 
+                <th>Name</th>
+                </tr>";
+            while($row = $query->fetch_assoc()){
+                $date1 = $row['date'];     
+                echo "<tr><td>".$row['id']."</td><td>".$row['topic'] ."</td><td>".$row['message']."</td><td>" .$row['date']
+                . "</td><td>".$row['name']."</td></tr>";
+            }
+            echo"</table>";
+        } else {
+            echo "there is no record!";
+        }
+          ?>
       </div>
       </div>
       <div class="space"></div>

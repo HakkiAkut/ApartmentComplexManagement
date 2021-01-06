@@ -69,7 +69,7 @@ $(this).addClass('select');
         <a href="messages.php" class="list-group-item list-group-item-action ">Messages</a>
         <a href="add-announcement.php" class="list-group-item list-group-item-action ">Add Announce</a>
         
-        <form action="logout.php" method="post">
+        <form action="../logout.php" method="post">
             <input type="submit" style="color:#7EA172;" id="logout" value="Log out" name="logout"></input>
         </form>
       </div>
@@ -110,7 +110,7 @@ $(this).addClass('select');
                 Contact <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdown">
-                <a href="../contact.php">suggestion</a>
+                <a href="../contact/send-messages.php">suggestion</a>
                 <a href="#contact">contact info</a>
               </div>
             </li>

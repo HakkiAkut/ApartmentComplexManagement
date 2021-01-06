@@ -13,14 +13,14 @@
   <meta name="keywords" content="Apartment Complex Web Page, Apartment Complex Manager">
   <meta name="description" content="a web site for the management of an apartment complex">
   <meta name="author" content="Hakkı Can Akut">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet">
   <title>Contact</title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
@@ -30,14 +30,15 @@
     <div class="border-right left-panel" id="sidebar-wrapper">
       <div class="sidebar-heading">Contact</div>
       <div class="list-group list-group-flush">
-        <a href="#contact" class="list-group-item list-group-item-action ">Contact</a>
+        <a href="#" class="list-group-item list-group-item-action ">Contact</a>
+        <a href="my-messages.php" class="list-group-item list-group-item-action ">My Messages</a>
       </div>
     </div>
     <div id="page-content-wrapper" class="content-wrap">
       <nav class="navbar navbar-expand-lg navbar-light clear-div border-bottom top-nav-menu">
         <button style="background-color: rgb(143, 75, 58);border: saddlebrown;" class="btn btn-primary" id="menu-toggle"><i class="fa fa-caret-right"></i></button>
         <div id="logo-container">
-          <a href="home-page.php" class="logo">
+          <a href="../home-page.php" class="logo">
               Akdeniz Apartment Complex
           </a>
       </div>
@@ -48,20 +49,20 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="top-nav-item">
-              <a  href="announcements.php">Announcements</a>
+              <a  href="../announcements.php">Announcements</a>
             </li>
             <li class="top-nav-item">
-              <a  href="document/dues.php">Documents</a>
+              <a  href="../document/dues.php">Documents</a>
             </li>
             <li class="top-nav-item">
                 <?php
                     if($_SESSION["authority"]==1){
-                      echo '<a href="admin-panel/add-resident.php" class="top-nav-link">Admin</a>';
+                      echo '<a href="../admin-panel/add-resident.php" class="top-nav-link">Admin</a>';
                     }
                 ?>
               </li>
             <li class="top-nav-item">
-              <a  href="management.php">Management</a>
+              <a  href="../management.php">Management</a>
             </li>
             <li class="top-nav-item dropdown-button">
               <a  href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -151,8 +152,8 @@
       </div>
       </footer>
   </div>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
